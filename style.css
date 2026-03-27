@@ -154,17 +154,13 @@ body {
     position: relative;
     width: 100%;
     max-width: 450px;
-    aspect-ratio: 4/5;
+    /* aspect-ratio: 4/5;  ← Закомментируйте или удалите эту строку */
+    min-height: 300px;  /* Добавьте минимальную высоту */
     background: linear-gradient(145deg, #8B7355, #6B5344, #4A3F35);
     padding: 20px;
-    box-shadow: 
-        0 15px 50px rgba(0, 0, 0, 0.4),
-        inset 0 3px 10px rgba(255, 255, 255, 0.3),
-        inset 0 -3px 10px rgba(0, 0, 0, 0.4),
-        0 0 0 5px rgba(139, 115, 85, 0.3);
-    border-radius: 5px;
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-    cursor: pointer;
+    display: flex;  /* Добавьте для правильного позиционирования */
+    align-items: center;
+    justify-content: center;
 }
 
 .ornate-frame::before {
