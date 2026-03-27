@@ -1,3 +1,122 @@
+// ===== ПЕРЕМЕЩЕНИЕ МУЗЕЙНОЙ СТЕНЫ =====
+const gallery = document.querySelector('.grand-gallery');
+const wall = document.querySelector('.gallery-wall');
+let isDown = false;
+let startX, startY, scrollLeft, scrollTop;
+let currentX = 0;
+let currentY = 0;
+
+// Начало перетаскивания
+gallery.addEventListener('mousedown', (e) => {
+    isDown = true;
+    gallery.classList.add('dragging');
+    startX = e.pageX - gallery.offsetLeft;
+    startY = e.pageY - gallery.offsetTop;
+    scrollLeft = currentX;
+    scrollTop = currentY;
+    gallery.style.cursor = 'grabbing';
+});
+
+// Конец перетаскивания
+gallery.addEventListener('mouseleave', () => {
+    isDown = false;
+    gallery.classList.remove('dragging');
+    gallery.style.cursor = 'grab';
+});
+
+gallery.addEventListener('mouseup', () => {
+    isDown = false;
+    gallery.classList.remove('dragging');
+    gallery.style.cursor = 'grab';
+});
+
+// Перемещение
+gallery.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    
+    const x = e.pageX - gallery.offsetLeft;
+    const y = e.pageY - gallery.offsetTop;
+    const walkX = (x - startX) * 1.5;  // Скорость перемещения
+    const walkY = (y - startY) * 1.5;
+    
+    currentX = scrollLeft + walkX;
+    currentY = scrollTop + walkY;
+    
+    // Ограничения перемещения
+    const maxX = 0;
+    const maxY = 0;
+    const minX = -(wall.scrollWidth - gallery.clientWidth);
+    const minY = -(wall.scrollHeight - gallery.clientHeight);
+    
+    currentX = Math.max(minX, Math.min(maxX, currentX));
+    currentY = Math.max(minY, Math.min(maxY, currentY));
+    
+    wall.style.transform = `translate(${currentX}px, ${currentY}px)`;
+});
+
+// ===== КОЛЕСО МЫШИ ДЛЯ ВЕРТИКАЛЬНОГО ПЕРЕМЕЩЕНИЯ =====
+gallery.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    
+    const speed = 2;
+    currentY -= e.deltaY * speed;
+    
+    const maxY = 0;
+    const minY = -(wall.scrollHeight - gallery.clientHeight);
+    currentY = Math.max(minY, Math.min(maxY, currentY));
+    
+    wall.style.transform = `translate(${currentX}px, ${currentY}px)`;
+}, { passive: false });
+
+// ===== ПЛАВНАЯ ПРОКРУТКА ДЛЯ ССЫЛОК =====
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            // Сброс позиции стены
+            currentX = 0;
+            currentY = 0;
+            wall.style.transform = `translate(0px, 0px)`;
+            
+            // Плавная прокрутка к секции
+            setTimeout(() => {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }, 300);
+        }
+    });
+});
+
+// ===== ИНДИКАТОР ПЕРЕМЕЩЕНИЯ =====
+function showMoveIndicator() {
+    const indicator = document.createElement('div');
+    indicator.className = 'move-indicator';
+    indicator.innerHTML = '🖱️ Зажмите левую кнопку мыши для перемещения';
+    document.body.appendChild(indicator);
+    
+    setTimeout(() => {
+        indicator.remove();
+    }, 6000);
+}
+
+// Показать индикатор при загрузке
+window.addEventListener('load', showMoveIndicator);
+
+// ===== ДАННЫЕ О КАРТИНАХ (ваш существующий код) =====
+const paintings = {
+    1: {
+        title: "«Гроза надвигается»",
+        year: "2026",
+        description: "Масло, холст. 80×100 см. Многослойная живопись.",
+        image: "images/photo_2026-03-13_09-29-09.jpg"
+    },
+    // ... остальные картины
+};
+
 // ===== ДАННЫЕ О КАРТИНАХ =====
 const paintings = {
     1: {
