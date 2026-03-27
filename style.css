@@ -98,119 +98,237 @@ body {
 }
 
 /* ===== ВЫСОКАЯ МУЗЕЙНАЯ СТЕНА (ЭРМИТАЖ) ===== */
+/* ===== ОБЪЁМНАЯ МУЗЕЙНАЯ СТЕНА ===== */
 .grand-gallery {
-    min-height: 4000px; /* ОЧЕНЬ ВЫСОКАЯ СТЕНА! */
-    background: 
-        linear-gradient(90deg, transparent 48%, rgba(200, 180, 150, 0.1) 50%, transparent 52%),
-        linear-gradient(180deg, #F9F7F2 0%, #F0ECE4 100%);
-    background-size: 100% 100%, 100% 100%;
-    padding: 4rem 2rem;
     position: relative;
+    width: 100%;
+    height: 3000px;  /* Высокая стена */
+    overflow: hidden;
+    background: 
+        /* Текстура штукатурки */
+        linear-gradient(180deg, #F5F0E8 0%, #EBE5D9 50%, #E3DCCF 100%),
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4"/></filter><rect width="100" height="100" filter="url(%23noise)" opacity="0.08"/></svg>');
+    background-size: 100% 100%, 200px 200px;
+    cursor: grab;
+    perspective: 1000px;  /* 3D перспектива */
 }
 
-/* Декоративные колонны (как в Эрмитаже) */
-.grand-gallery::before,
+.grand-gallery:active {
+    cursor: grabbing;
+}
+
+.grand-gallery.dragging {
+    cursor: grabbing;
+}
+
+/* Контейнер стены с 3D эффектом */
+.gallery-wall {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.1s ease-out;
+    display: flex;
+    flex-direction: column;
+    padding: 100px 80px;
+    box-sizing: border-box;
+}
+
+/* Декоративные элементы стены (колонны, карнизы) */
+.grand-gallery::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    background: 
+        linear-gradient(180deg, rgba(139, 115, 85, 0.15) 0%, transparent 100%),
+        repeating-linear-gradient(90deg, 
+            transparent 0px,
+            transparent 200px,
+            rgba(139, 115, 85, 0.1) 200px,
+            rgba(139, 115, 85, 0.1) 210px
+        );
+    z-index: 10;
+    pointer-events: none;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
 .grand-gallery::after {
     content: '';
     position: fixed;
-    top: 200px;
-    width: 60px;
-    height: calc(100vh - 300px);
-    background: linear-gradient(90deg, #E8E4DC, #F0ECE4, #E8E4DC);
-    border-right: 2px solid #D4CFC7;
-    border-left: 2px solid #D4CFC7;
-    z-index: 1;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background: 
+        linear-gradient(0deg, rgba(139, 115, 85, 0.15) 0%, transparent 100%),
+        repeating-linear-gradient(90deg, 
+            transparent 0px,
+            transparent 200px,
+            rgba(139, 115, 85, 0.1) 200px,
+            rgba(139, 115, 85, 0.1) 210px
+        );
+    z-index: 10;
+    pointer-events: none;
+    box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
+}
+
+/* Боковые колонны (как в Эрмитаже) */
+.wall-column-left,
+.wall-column-right {
+    position: fixed;
+    top: 120px;
+    bottom: 80px;
+    width: 80px;
+    background: 
+        linear-gradient(90deg, 
+            rgba(200, 190, 175, 0.3) 0%,
+            rgba(220, 210, 195, 0.2) 50%,
+            rgba(200, 190, 175, 0.3) 100%
+        );
+    border-left: 2px solid rgba(139, 115, 85, 0.2);
+    border-right: 2px solid rgba(139, 115, 85, 0.2);
+    z-index: 5;
     pointer-events: none;
 }
 
-.grand-gallery::before {
+.wall-column-left {
     left: 0;
+    box-shadow: 5px 0 30px rgba(0,0,0,0.1) inset;
 }
 
-.grand-gallery::after {
+.wall-column-right {
     right: 0;
+    box-shadow: -5px 0 30px rgba(0,0,0,0.1) inset;
 }
 
-.gallery-wall {
-    max-width: 1400px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 100px; /* Большое расстояние между рядами */
-}
-
-/* РЯДЫ КАРТИН */
+/* Ряды картин с 3D эффектом */
 .painting-row {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 80px;
+    gap: 100px;
     justify-items: center;
     align-items: center;
-    padding: 2rem;
+    padding: 60px 20px;
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease;
 }
 
-/* ОРНАМЕНТАЛЬНАЯ РАМКА */
+.painting-row:hover {
+    transform: translateZ(20px);  /* Эффект выдвижения при наведении */
+}
+
+/* Орнаментальная рамка с тенью */
 .ornate-frame {
     position: relative;
     width: 100%;
     max-width: 450px;
-    /* aspect-ratio: 4/5;  ← Закомментируйте или удалите эту строку */
-    min-height: 300px;  /* Добавьте минимальную высоту */
+    min-height: 300px;
     background: linear-gradient(145deg, #8B7355, #6B5344, #4A3F35);
     padding: 20px;
-    display: flex;  /* Добавьте для правильного позиционирования */
-    align-items: center;
-    justify-content: center;
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.5),  /* Глубокая тень */
+        0 10px 30px rgba(0, 0, 0, 0.3),
+        inset 0 3px 10px rgba(255, 255, 255, 0.3),
+        inset 0 -3px 10px rgba(0, 0, 0, 0.4),
+        0 0 0 8px rgba(139, 115, 85, 0.2);  /* Внешняя рамка */
+    border-radius: 5px;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    transform-style: preserve-3d;
 }
 
 .ornate-frame::before {
     content: '';
     position: absolute;
-    top: 5px;
-    left: 5px;
-    right: 5px;
-    bottom: 5px;
-    border: 2px solid rgba(201, 185, 154, 0.4);
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    border: 2px solid rgba(201, 185, 154, 0.5);
     pointer-events: none;
+    box-shadow: inset 0 2px 10px rgba(0,0,0,0.2);
 }
 
 .ornate-frame:hover {
-    transform: scale(1.03) translateY(-5px);
+    transform: scale(1.02) translateZ(30px);
     box-shadow: 
-        0 25px 70px rgba(0, 0, 0, 0.5),
+        0 30px 80px rgba(0, 0, 0, 0.6),
+        0 15px 40px rgba(0, 0, 0, 0.4),
         inset 0 3px 10px rgba(255, 255, 255, 0.3),
         inset 0 -3px 10px rgba(0, 0, 0, 0.4);
 }
 
+/* Картина внутри рамки */
 .painting {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
+    max-height: 500px;
+    object-fit: contain;
     display: block;
-    box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.4);
+    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
 }
 
-/* ИНФОРМАЦИЯ О КАРТИНЕ */
+/* Информация о картине с 3D эффектом */
 .painting-info {
     text-align: center;
     padding: 1.5rem;
-    background: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.7);
     border-top: 1px solid #D4CFC7;
     margin-top: -5px;
     border-radius: 0 0 5px 5px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transform: translateZ(10px);
 }
 
-.painting-info h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.4rem;
-    color: #2C2C2C;
-    margin-bottom: 0.5rem;
-    font-style: italic;
+/* Индикатор перемещения */
+.move-indicator {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(44, 44, 44, 0.8);
+    color: #F5F3EF;
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    z-index: 1000;
+    opacity: 0;
+    animation: fadeInOut 4s ease 2s;
+    pointer-events: none;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
 }
 
-.painting-info p {
-    font-size: 0.95rem;
-    color: #6C6C6C;
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translateX(-50%) translateY(20px); }
+    20% { opacity: 1; transform: translateX(-50%) translateY(0); }
+    80% { opacity: 1; transform: translateX(-50%) translateY(0); }
+    100% { opacity: 0; transform: translateX(-50%) translateY(-20px); }
+}
+
+/* Адаптивность */
+@media (max-width: 968px) {
+    .grand-gallery {
+        height: 2500px;
+    }
+    
+    .wall-column-left,
+    .wall-column-right {
+        display: none;
+    }
+    
+    .gallery-wall {
+        padding: 100px 40px;
+    }
+    
+    .painting-row {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
 }
 
 /* ПУСТОЙ РЯД ДЛЯ БУДУЩИХ РАБОТ */
