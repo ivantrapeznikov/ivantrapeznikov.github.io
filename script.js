@@ -84,7 +84,6 @@ document.querySelectorAll('.painting-frame').forEach(frame => {
             document.getElementById('modalTitle').textContent = painting.title;
             document.getElementById('modalYear').textContent = painting.year;
             document.getElementById('modalDescription').textContent = painting.description;
-            document.getElementById('modalLink').href = painting.fullPage;
             
             document.getElementById('paintingModal').style.display = 'block';
             document.body.style.overflow = 'hidden';
@@ -98,7 +97,6 @@ function closeModal() {
     document.body.style.overflow = 'auto';
 }
 
-// Закрытие по клику вне окна
 window.addEventListener('click', function(event) {
     const modal = document.getElementById('paintingModal');
     if (event.target === modal) {
@@ -106,7 +104,6 @@ window.addEventListener('click', function(event) {
     }
 });
 
-// Закрытие по ESC
 document.addEventListener('keydown', function(event) {
     if (event.key === 'Escape') {
         closeModal();
