@@ -4,204 +4,192 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Иван Трапезников | Художник масляной живописи</title>
-    <meta name="description" content="Галерея работ Ивана Трапезникова. Масляная живопись, многослойная техника, зимние пейзажи.">
+    <meta name="description" content="Галерея работ Ивана Трапезникова. Масляная живопись, многослойная техника.">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Georgia&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Шапка -->
-    <header class="header">
-        <h1 class="site-title">Иван Трапезников</h1>
-        <p class="site-subtitle">Художник масляной живописи</p>
+    <header class="hermitage-header">
+        <div class="header-content">
+            <div class="ornament">❦</div>
+            <h1 class="gallery-title">Иван Трапезников</h1>
+            <p class="gallery-subtitle">Галерея масляной живописи</p>
+            <div class="ornament">❦</div>
+        </div>
     </header>
 
     <!-- Навигация -->
-    <nav class="nav">
+    <nav class="navbar">
         <a href="#gallery" class="nav-link">Галерея</a>
         <a href="#about" class="nav-link">О художнике</a>
         <a href="#contact" class="nav-link">Контакты</a>
     </nav>
 
-    <!-- ГАЛЕРЕЯ -->
-    <main class="gallery-section" id="gallery">
-        <div class="gallery-intro">
-            <h2>Галерея работ</h2>
-            <p>Масло, холст. Многослойная техника</p>
-        </div>
+    <!-- МУЗЕЙНАЯ СТЕНА -->
+    <main class="museum-wall" id="gallery">
+        <div class="wall-container">
+            
+            <!-- РЯД 1 -->
+            <div class="painting-row">
+                <div class="painting-frame" data-id="1">
+                    <div class="frame">
+                        <img src="images/photo_2026-03-13_09-29-09.jpg" alt="Гроза надвигается" class="painting">
+                    </div>
+                    <div class="painting-label">
+                        <span class="title">«Гроза надвигается»</span>
+                        <span class="year">2026</span>
+                    </div>
+                </div>
 
-        <div class="paintings-grid">
-            <!-- Картина 1 -->
-            <article class="painting-card" data-id="1">
-                <div class="painting-wrapper">
-                    <img src="images/photo_2026-03-13_09-29-09.jpg" alt="Гроза надвигается" class="painting-photo" loading="lazy">
+                <div class="painting-frame" data-id="2">
+                    <div class="frame">
+                        <img src="images/painting-2.jpg" alt="Северная ночь в горах" class="painting">
+                    </div>
+                    <div class="painting-label">
+                        <span class="title">«Северная ночь в горах»</span>
+                        <span class="year">2026</span>
+                    </div>
                 </div>
-                <div class="painting-caption">
-                    <h3>«Гроза надвигается»</h3>
-                    <p class="painting-year">2026</p>
-                    <p class="painting-size">80×100 см</p>
-                </div>
-            </article>
 
-            <!-- Картина 2 -->
-            <article class="painting-card" data-id="2">
-                <div class="painting-wrapper">
-                    <img src="images/painting-2.jpg" alt="Северная ночь в горах" class="painting-photo" loading="lazy">
+                <div class="painting-frame" data-id="3">
+                    <div class="frame">
+                        <img src="images/painting-3.jpg" alt="Утро в деревне" class="painting">
+                    </div>
+                    <div class="painting-label">
+                        <span class="title">«Утро в деревне»</span>
+                        <span class="year">2026</span>
+                    </div>
                 </div>
-                <div class="painting-caption">
-                    <h3>«Северная ночь в горах»</h3>
-                    <p class="painting-year">2026</p>
-                    <p class="painting-size">80×100 см</p>
-                </div>
-            </article>
+            </div>
 
-            <!-- Картина 3 -->
-            <article class="painting-card" data-id="3">
-                <div class="painting-wrapper">
-                    <img src="images/painting-3.jpg" alt="Утро в деревне" class="painting-photo" loading="lazy">
+            <!-- РЯД 2 -->
+            <div class="painting-row">
+                <div class="painting-frame" data-id="4">
+                    <div class="frame">
+                        <img src="images/painting-4.jpg" alt="Молчаливое общение" class="painting">
+                    </div>
+                    <div class="painting-label">
+                        <span class="title">«Молчаливое общение»</span>
+                        <span class="year">2026</span>
+                    </div>
                 </div>
-                <div class="painting-caption">
-                    <h3>«Утро в деревне»</h3>
-                    <p class="painting-year">2026</p>
-                    <p class="painting-size">80×100 см</p>
-                </div>
-            </article>
 
-            <!-- Картина 4 -->
-            <article class="painting-card" data-id="4">
-                <div class="painting-wrapper">
-                    <img src="images/painting-4.jpg" alt="Молчаливое общение" class="painting-photo" loading="lazy">
+                <div class="painting-frame" data-id="5">
+                    <div class="frame">
+                        <img src="images/painting-5.jpg" alt="Море. Полярная ночь" class="painting">
+                    </div>
+                    <div class="painting-label">
+                        <span class="title">«Море. Полярная ночь»</span>
+                        <span class="year">2026</span>
+                    </div>
                 </div>
-                <div class="painting-caption">
-                    <h3>«Молчаливое общение»</h3>
-                    <p class="painting-year">2026</p>
-                    <p class="painting-size">100×120 см</p>
-                </div>
-            </article>
 
-            <!-- Картина 5 -->
-            <article class="painting-card" data-id="5">
-                <div class="painting-wrapper">
-                    <img src="images/painting-5.jpg" alt="Море. Полярная ночь" class="painting-photo" loading="lazy">
+                <div class="painting-frame" data-id="6">
+                    <div class="frame">
+                        <img src="images/painting-6.jpg" alt="Мастерская" class="painting">
+                    </div>
+                    <div class="painting-label">
+                        <span class="title">«Мастерская»</span>
+                        <span class="year">2025</span>
+                    </div>
                 </div>
-                <div class="painting-caption">
-                    <h3>«Море. Полярная ночь»</h3>
-                    <p class="painting-year">2026</p>
-                    <p class="painting-size">70×90 см</p>
-                </div>
-            </article>
+            </div>
 
-            <!-- Картина 6 -->
-            <article class="painting-card" data-id="6">
-                <div class="painting-wrapper">
-                    <img src="images/painting-6.jpg" alt="Мастерская" class="painting-photo" loading="lazy">
+            <!-- РЯД 3 -->
+            <div class="painting-row">
+                <div class="painting-frame" data-id="7">
+                    <div class="frame">
+                        <img src="images/painting-7.jpg" alt="7 день" class="painting">
+                    </div>
+                    <div class="painting-label">
+                        <span class="title">«7 день»</span>
+                        <span class="year">2025</span>
+                    </div>
                 </div>
-                <div class="painting-caption">
-                    <h3>«Мастерская»</h3>
-                    <p class="painting-year">2025</p>
-                    <p class="painting-size">60×80 см</p>
-                </div>
-            </article>
 
-            <!-- Картина 7 -->
-            <article class="painting-card" data-id="7">
-                <div class="painting-wrapper">
-                    <img src="images/painting-7.jpg" alt="7 день" class="painting-photo" loading="lazy">
+                <div class="painting-frame" data-id="8">
+                    <div class="frame">
+                        <img src="images/painting-8.jpg" alt="Остров" class="painting">
+                    </div>
+                    <div class="painting-label">
+                        <span class="title">«Остров»</span>
+                        <span class="year">2021</span>
+                    </div>
                 </div>
-                <div class="painting-caption">
-                    <h3>«7 день»</h3>
-                    <p class="painting-year">2025</p>
-                    <p class="painting-size">70×90 см</p>
-                </div>
-            </article>
 
-            <!-- Картина 8 -->
-            <article class="painting-card" data-id="8">
-                <div class="painting-wrapper">
-                    <img src="images/painting-8.jpg" alt="Остров" class="painting-photo" loading="lazy">
+                <div class="painting-frame" data-id="9">
+                    <div class="frame">
+                        <img src="images/painting-9.jpg" alt="Небо" class="painting">
+                    </div>
+                    <div class="painting-label">
+                        <span class="title">«Небо»</span>
+                        <span class="year">2019</span>
+                    </div>
                 </div>
-                <div class="painting-caption">
-                    <h3>«Остров»</h3>
-                    <p class="painting-year">2021</p>
-                    <p class="painting-size">80×100 см</p>
-                </div>
-            </article>
+            </div>
 
-            <!-- Картина 9 -->
-            <article class="painting-card" data-id="9">
-                <div class="painting-wrapper">
-                    <img src="images/painting-9.jpg" alt="Небо" class="painting-photo" loading="lazy">
+            <!-- РЯД 4 -->
+            <div class="painting-row">
+                <div class="painting-frame" data-id="10">
+                    <div class="frame">
+                        <img src="images/painting-10.jpg" alt="Зимний пейзаж" class="painting">
+                    </div>
+                    <div class="painting-label">
+                        <span class="title">«Зимний пейзаж»</span>
+                        <span class="year">2024</span>
+                    </div>
                 </div>
-                <div class="painting-caption">
-                    <h3>«Небо»</h3>
-                    <p class="painting-year">2019</p>
-                    <p class="painting-size">60×80 см</p>
-                </div>
-            </article>
+            </div>
 
-            <!-- Картина 10 -->
-            <article class="painting-card" data-id="10">
-                <div class="painting-wrapper">
-                    <img src="images/painting-10.jpg" alt="Зимний пейзаж" class="painting-photo" loading="lazy">
-                </div>
-                <div class="painting-caption">
-                    <h3>«Зимний пейзаж»</h3>
-                    <p class="painting-year">2024</p>
-                    <p class="painting-size">80×100 см</p>
-                </div>
-            </article>
         </div>
     </main>
 
     <!-- О ХУДОЖНИКЕ -->
     <section class="about-section" id="about">
-        <div class="section-container">
+        <div class="section-content">
             <h2>О художнике</h2>
             <div class="ornament">❦ </div>
-            <p class="about-text">
-                Работаю в технике многослойной масляной живописи. 
-                Использую натуральные пигменты и традиционные методы. 
-                Вдохновляюсь северной природой, зимними пейзажами 
-                и деревенской архитектурой.
-            </p>
-            <p class="about-text">
-                Каждая картина — это результат многомесячной работы, 
-                где каждый слой наносится после полного высыхания предыдущего.
-            </p>
+            <p>Иван Трапезников — художник, работающий в технике многослойной масляной живописи. Использует натуральные пигменты и традиционные методы.</p>
+            <p>Вдохновляется северной природой, зимними пейзажами и деревенской архитектурой.</p>
+            <a href="#contact" class="cta-button">Связаться</a>
         </div>
     </section>
 
     <!-- КОНТАКТЫ -->
     <section class="contact-section" id="contact">
-        <div class="section-container">
+        <div class="section-content">
             <h2>Контакты</h2>
             <div class="ornament">❦ ❦ ❦</div>
             <p>По вопросам приобретения картин:</p>
-            <div class="contact-links">
-                <a href="mailto:ivan@trapeznikov.ru" class="contact-link">📧 ivan@trapeznikov.ru</a>
-                <a href="https://instagram.com/ivantrapeznikov" class="contact-link" target="_blank">📱 @ivantrapeznikov</a>
-                <a href="https://vk.com/ivantrapeznikov" class="contact-link" target="_blank"> VK: ivantrapeznikov</a>
+            <div class="contact-info">
+                <p>📧 <a href="mailto:ivan@trapeznikov.ru">ivan@trapeznikov.ru</a></p>
+                <p>📱 <a href="https://instagram.com/ivantrapeznikov">@ivantrapeznikov</a></p>
+                <p> VK: <a href="https://vk.com/ivantrapeznikov">ivantrapeznikov</a></p>
             </div>
         </div>
     </section>
 
     <!-- Подвал -->
     <footer class="footer">
-        <p>&copy; 2025 Иван Трапезников. Все права защищены.</p>
+        <div class="footer-content">
+            <div class="ornament">❦</div>
+            <p>&copy; 2025 Иван Трапезников. Все права защищены.</p>
+        </div>
     </footer>
 
     <!-- Модальное окно -->
     <div class="modal" id="modal">
-        <div class="modal-overlay" onclick="closeModal()"></div>
-        <div class="modal-window">
-            <button class="modal-close" onclick="closeModal()">&times;</button>
-            <div class="modal-content">
-                <img src="" alt="" id="modalImg" class="modal-img">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()">&times;</button>
+            <div class="modal-body">
+                <img src="" alt="" id="modalImg" class="modal-image">
                 <div class="modal-info">
                     <h2 id="modalTitle"></h2>
-                    <p id="modalYear" class="modal-year"></p>
-                    <p id="modalSize" class="modal-size"></p>
-                    <p id="modalDesc" class="modal-desc"></p>
-                    <a href="#contact" class="btn-buy" onclick="closeModal()">Связаться для покупки</a>
+                    <p id="modalYear"></p>
+                    <p id="modalSize"></p>
+                    <p id="modalDesc"></p>
+                    <a href="#contact" class="inquire-btn" onclick="closeModal()">Узнать о покупке</a>
                 </div>
             </div>
         </div>
