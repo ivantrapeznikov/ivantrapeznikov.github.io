@@ -49,150 +49,146 @@
         <a href="#contact" class="nav-link">Контакты</a>
     </nav>
 
-    <!-- ВЫСОКАЯ МУЗЕЙНАЯ СТЕНА (как в Эрмитаже) -->
-    
-    <main class="grand-gallery" id="gallery">
-        <div class="gallery-wall">
-            
-            <!-- РЯД 1 -->
-            <div class="painting-row">
-                <div class="painting-frame" data-id="1">
-                    <div class="ornate-frame">
-<img src="images/photo_2026-03-13_09-29-09.jpg" alt="Гроза надвигается — Иван Трапезников" class="painting">
+    <!-- 3D МУЗЕЙНАЯ СТЕНА С ЭФФЕКТОМ ПРИСУТСТВИЯ -->
+    <main class="museum-container" id="gallery">
+        
+        <!-- Потолок с лепниной -->
+        <div class="ceiling">
+            <div class="ceiling-molding"></div>
+            <div class="ceiling-detail"></div>
+        </div>
+
+        <!-- 3D Стена с картинами -->
+        <div class="wall-viewport">
+            <div class="museum-wall" id="museumWall">
+                
+                <!-- РЯД 1 (верхний) -->
+                <div class="painting-row row-1">
+                    <div class="painting-frame" data-id="1" style="transform: rotateY(-5deg) rotateX(2deg);">
+                        <div class="ornate-frame">
+                            <img src="images/photo_2026-03-13_09-29-09.jpg" alt="Гроза надвигается — Иван Трапезников" class="painting">
+                            <div class="frame-reflection"></div>
+                        </div>
+                        <div class="painting-info">
+                            <h3>«Гроза надвигается»</h3>
+                            <p>2026 • Масло, холст • 80×100 см</p>
+                        </div>
                     </div>
-                    <div class="painting-info">
-                        <h3>«Гроза надвигается»</h3>
-                        <p>2026 • Масло, холст • 80×100 см</p>
+
+                    <div class="painting-frame" data-id="2" style="transform: rotateY(0deg) rotateX(0deg);">
+                        <div class="ornate-frame">
+                            <img src="images/painting-2.jpg" alt="Снежный лес — Иван Трапезников" class="painting">
+                            <div class="frame-reflection"></div>
+                        </div>
+                        <div class="painting-info">
+                            <h3>«Снежный лес»</h3>
+                            <p>2025 • Масло, холст • 60×80 см</p>
+                        </div>
+                    </div>
+
+                    <div class="painting-frame" data-id="3" style="transform: rotateY(3deg) rotateX(-1deg);">
+                        <div class="ornate-frame">
+                            <img src="images/painting-3.jpg" alt="Деревенский двор — Иван Трапезников" class="painting">
+                            <div class="frame-reflection"></div>
+                        </div>
+                        <div class="painting-info">
+                            <h3>«Деревенский двор»</h3>
+                            <p>2024 • Масло, холст • 80×100 см</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="painting-frame" data-id="2">
-                    <div class="ornate-frame">
-                        <img src="images/painting-2.jpg" alt="Снежный лес — Иван Трапезников" class="painting">
+                <!-- РЯД 2 (средний) -->
+                <div class="painting-row row-2">
+                    <div class="painting-frame" data-id="4" style="transform: rotateY(-3deg) rotateX(1deg);">
+                        <div class="ornate-frame">
+                            <img src="images/painting-4.jpg" alt="Горная тишина — Иван Трапезников" class="painting">
+                            <div class="frame-reflection"></div>
+                        </div>
+                        <div class="painting-info">
+                            <h3>«Горная тишина»</h3>
+                            <p>2024 • Масло, холст • 100×120 см</p>
+                        </div>
                     </div>
-                    <div class="painting-info">
-                        <h3>«Снежный лес»</h3>
-                        <p>2025 • Масло, холст • 60×80 см</p>
+
+                    <div class="painting-frame" data-id="5" style="transform: rotateY(0deg) rotateX(0deg);">
+                        <div class="ornate-frame">
+                            <img src="images/painting-5.jpg" alt="Лесная тропа — Иван Трапезников" class="painting">
+                            <div class="frame-reflection"></div>
+                        </div>
+                        <div class="painting-info">
+                            <h3>«Лесная тропа»</h3>
+                            <p>2025 • Масло, холст • 50×70 см</p>
+                        </div>
+                    </div>
+
+                    <div class="painting-frame" data-id="6" style="transform: rotateY(4deg) rotateX(-2deg);">
+                        <div class="ornate-frame">
+                            <img src="images/painting-6.jpg" alt="Первый снег — Иван Трапезников" class="painting">
+                            <div class="frame-reflection"></div>
+                        </div>
+                        <div class="painting-info">
+                            <h3>«Первый снег»</h3>
+                            <p>2024 • Масло, холст • 60×80 см</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="painting-frame" data-id="3">
-                    <div class="ornate-frame">
-                        <img src="images/painting-3.jpg" alt="Деревенский двор — Иван Трапезников" class="painting">
+                <!-- РЯД 3 (нижний) -->
+                <div class="painting-row row-3">
+                    <div class="painting-frame" data-id="7" style="transform: rotateY(-2deg) rotateX(3deg);">
+                        <div class="ornate-frame">
+                            <img src="images/painting-7.jpg" alt="Утренний свет — Иван Трапезников" class="painting">
+                            <div class="frame-reflection"></div>
+                        </div>
+                        <div class="painting-info">
+                            <h3>«Утренний свет»</h3>
+                            <p>2025 • Масло, холст • 70×90 см</p>
+                        </div>
                     </div>
-                    <div class="painting-info">
-                        <h3>«Деревенский двор»</h3>
-                        <p>2024 • Масло, холст • 80×100 см</p>
+
+                    <div class="painting-frame" data-id="8" style="transform: rotateY(0deg) rotateX(0deg);">
+                        <div class="ornate-frame">
+                            <img src="images/painting-8.jpg" alt="Зимняя сказка — Иван Трапезников" class="painting">
+                            <div class="frame-reflection"></div>
+                        </div>
+                        <div class="painting-info">
+                            <h3>«Зимняя сказка»</h3>
+                            <p>2024 • Масло, холст • 80×100 см</p>
+                        </div>
+                    </div>
+
+                    <div class="painting-frame" data-id="9" style="transform: rotateY(3deg) rotateX(-1deg);">
+                        <div class="ornate-frame">
+                            <img src="images/painting-9.jpg" alt="Деревня зимой — Иван Трапезников" class="painting">
+                            <div class="frame-reflection"></div>
+                        </div>
+                        <div class="painting-info">
+                            <h3>«Деревня зимой»</h3>
+                            <p>2025 • Масло, холст • 60×80 см</p>
+                        </div>
                     </div>
                 </div>
+
+                <!-- ПУСТОЕ МЕСТО для будущих работ -->
+                <div class="empty-row">
+                    <div class="empty-placeholder">
+                        <p>🎨 Здесь скоро появятся новые работы...</p>
+                    </div>
+                </div>
+
             </div>
+        </div>
 
-            <!-- РЯД 2 -->
-            <div class="painting-row">
-                <div class="painting-frame" data-id="4">
-                    <div class="ornate-frame">
-                        <img src="images/painting-4.jpg" alt="Горная тишина — Иван Трапезников" class="painting">
-                    </div>
-                    <div class="painting-info">
-                        <h3>«Горная тишина»</h3>
-                        <p>2024 • Масло, холст • 100×120 см</p>
-                    </div>
-                </div>
+        <!-- Мраморный пол -->
+        <div class="marble-floor">
+            <div class="floor-reflection"></div>
+            <div class="floor-pattern"></div>
+        </div>
 
-                <div class="painting-frame" data-id="5">
-                    <div class="ornate-frame">
-                        <img src="images/painting-5.jpg" alt="Лесная тропа — Иван Трапезников" class="painting">
-                    </div>
-                    <div class="painting-info">
-                        <h3>«Лесная тропа»</h3>
-                        <p>2025 • Масло, холст • 50×70 см</p>
-                    </div>
-                </div>
-
-                <div class="painting-frame" data-id="6">
-                    <div class="ornate-frame">
-                        <img src="images/painting-6.jpg" alt="Первый снег — Иван Трапезников" class="painting">
-                    </div>
-                    <div class="painting-info">
-                        <h3>«Первый снег»</h3>
-                        <p>2024 • Масло, холст • 60×80 см</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- РЯД 3 (для высоты как в Эрмитаже) -->
-            <div class="painting-row">
-                <div class="painting-frame" data-id="7">
-                    <div class="ornate-frame">
-                        <img src="images/painting-7.jpg" alt="Утренний свет — Иван Трапезников" class="painting">
-                    </div>
-                    <div class="painting-info">
-                        <h3>«Утренний свет»</h3>
-                        <p>2025 • Масло, холст • 70×90 см</p>
-                    </div>
-                </div>
-
-                <div class="painting-frame" data-id="8">
-                    <div class="ornate-frame">
-                        <img src="images/painting-8.jpg" alt="Зимняя сказка — Иван Трапезников" class="painting">
-                    </div>
-                    <div class="painting-info">
-                        <h3>«Зимняя сказка»</h3>
-                        <p>2024 • Масло, холст • 80×100 см</p>
-                    </div>
-                </div>
-
-                <div class="painting-frame" data-id="9">
-                    <div class="ornate-frame">
-                        <img src="images/painting-9.jpg" alt="Деревня зимой — Иван Трапезников" class="painting">
-                    </div>
-                    <div class="painting-info">
-                        <h3>«Деревня зимой»</h3>
-                        <p>2025 • Масло, холст • 60×80 см</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- РЯД 4 (ещё выше!) -->
-            <div class="painting-row">
-                <div class="painting-frame" data-id="10">
-                    <div class="ornate-frame">
-                        <img src="images/painting-10.jpg" alt="Снежная даль — Иван Трапезников" class="painting">
-                    </div>
-                    <div class="painting-info">
-                        <h3>«Снежная даль»</h3>
-                        <p>2024 • Масло, холст • 90×110 см</p>
-                    </div>
-                </div>
-
-                <div class="painting-frame" data-id="11">
-                    <div class="ornate-frame">
-                        <img src="images/painting-11.jpg" alt="Вечер в деревне — Иван Трапезников" class="painting">
-                    </div>
-                    <div class="painting-info">
-                        <h3>«Вечер в деревне»</h3>
-                        <p>2025 • Масло, холст • 70×90 см</p>
-                    </div>
-                </div>
-
-                <div class="painting-frame" data-id="12">
-                    <div class="ornate-frame">
-                        <img src="images/painting-12.jpg" alt="Морозное утро — Иван Трапезников" class="painting">
-                    </div>
-                    <div class="painting-info">
-                        <h3>«Морозное утро»</h3>
-                        <p>2024 • Масло, холст • 80×100 см</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ПУСТОЕ МЕСТО для будущих работ -->
-            <div class="empty-row">
-                <div class="empty-placeholder">
-                    <p>Здесь скоро появятся новые работы...</p>
-                </div>
-            </div>
-
+        <!-- Индикатор управления -->
+        <div class="control-indicator">
+            <span>🖱️ Двигайте мышью для обзора • Колесо для приближения</span>
         </div>
     </main>
 
