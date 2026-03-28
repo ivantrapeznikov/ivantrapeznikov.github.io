@@ -72,31 +72,67 @@ const paintingsData = {
     }
 };
 
-// ===== ОТКРЫТИЕ МОДАЛЬНОГО ОКНА =====
-// При клике на картину
-document.querySelectorAll('.painting-frame').forEach(frame => {
-    frame.addEventListener('click', function() {
-        const id = this.getAttribute('data-id');
-        const data = paintingsData[id];
-        
-        // Заполняем данные
-        document.getElementById('modalImg').src = data.image;
-        document.getElementById('modalTitle').textContent = data.title;
-        document.getElementById('modalYear').textContent = data.year;
-        document.getElementById('modalSize').textContent = data.size;
-        document.getElementById('modalDesc').textContent = data.description;
-        
-        // Показываем окно
-        document.getElementById('modal').style.display = 'block';
-        document.body.style.overflow = 'hidden';
+// ===== ОТКРЫТИЕ МОДАЛЬНОГО ОКНА ПРИ КЛИКЕ =====
+document.addEventListener('DOMContentLoaded', function() {
+    // Находим все рамки с картинами
+    const frames = document.querySelectorAll('.painting-frame');
+    
+    console.log('Найдено картин:', frames.length); // Для отладки
+    
+    frames.forEach(function(frame) {
+        frame.addEventListener('click', function() {
+            const id = this.getAttribute('data-id');
+            console.log('Клик по картине ID:', id); // Для отладки
+            
+            const data = paintingsData[id];
+            
+            if (data) {
+                // Заполняем данные
+                document.getElementById('modalImg').src = data.image;
+                document.getElementById('modalImg').alt = data.title;
+                document.getElementById('modalTitle').textContent = data.title;
+                document.getElementById('modalYear').textContent = data.year;
+                document.getElementById('modalSize').textContent = data.size;
+                document.getElementById('modalDesc').textContent = data.description;
+                
+                // Показываем окно
+                document.getElementById('modal').style.display = 'block';
+                document.body.style.overflow = 'hidden';
+                
+                console.log('Модальное окно открыто'); // Для отладки
+            } else {
+                console.error('Картина с ID', id, 'не найдена в данных');
+            }
+        });
     });
 });
 
-// Закрытие
+// ===== ЗАКРЫТИЕ МОДАЛЬНОГО ОКНА =====
 function closeModal() {
     document.getElementById('modal').style.display = 'none';
     document.body.style.overflow = 'auto';
+    console.log('Модальное окно закрыто'); // Для отладки
 }
+
+// Закрытие по клику вне окна
+window.addEventListener('click', function(e) {
+    const modal = document.getElementById('modal');
+    if (e.target === modal) {
+        closeModal();
+    }
+});
+
+// Закрытие по клавише ESC
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeModal();
+    }
+});
+
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeModal();
+    }
 });
 
 // ===== ПЛАВНАЯ ПРОКРУТКА =====
