@@ -1,4 +1,4 @@
-/* ===== БАЗОВЫЕ НАСТРОЙКИ ===== */
+/* ===== БАЗА ===== */
 * {
     margin: 0;
     padding: 0;
@@ -6,251 +6,206 @@
 }
 
 body {
-    font-family: 'Cormorant Garamond', 'Georgia', serif;
-    background: #1a1a1a;
-    color: #2C2C2C;
+    font-family: 'Georgia', serif;
+    background: #1a1814;
+    color: #e8e4dc;
     line-height: 1.6;
     overflow-x: hidden;
 }
 
-/* ===== ШАПКА В СТИЛЕ ЭРМИТАЖА ===== */
-.hermitage-header {
-    background: linear-gradient(180deg, #1a1a1a 0%, #2d2d2d 100%);
-    color: #F5F3EF;
+/* ===== ШАПКА ===== */
+.gallery-header {
+    background: linear-gradient(180deg, #0d0c0a 0%, #1a1814 100%);
     text-align: center;
     padding: 2.5rem 2rem;
-    border-bottom: 3px solid #C9B99A;
-    position: relative;
-    z-index: 100;
-}
-
-.header-ornament {
-    font-size: 1.5rem;
-    color: #C9B99A;
-    margin: 0.5rem 0;
+    border-bottom: 2px solid #c9b99a;
 }
 
 .gallery-title {
     font-family: 'Playfair Display', serif;
     font-size: 2.5rem;
-    font-weight: 700;
     letter-spacing: 4px;
-    margin: 1rem 0;
+    color: #f5f3ef;
     text-transform: uppercase;
 }
 
 .gallery-subtitle {
-    font-size: 1.1rem;
-    color: #C9B99A;
+    color: #c9b99a;
     font-style: italic;
-    letter-spacing: 2px;
+    margin-top: 0.5rem;
+    font-size: 1.1rem;
 }
 
 /* ===== НАВИГАЦИЯ ===== */
 .navbar {
-    background: rgba(245, 243, 239, 0.98);
-    border-bottom: 2px solid #E0DDD5;
+    background: rgba(26, 24, 20, 0.98);
     padding: 1rem;
     text-align: center;
     position: sticky;
     top: 0;
     z-index: 100;
-    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #3d3a34;
 }
 
 .nav-link {
     display: inline-block;
     margin: 0 1.5rem;
-    color: #5C5C5C;
+    color: #c9b99a;
     text-decoration: none;
     font-size: 1rem;
-    letter-spacing: 1px;
     transition: color 0.3s;
-    position: relative;
-}
-
-.nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: #8B7355;
-    transition: width 0.3s;
 }
 
 .nav-link:hover {
-    color: #2C2C2C;
+    color: #f5f3ef;
 }
 
-.nav-link:hover::after {
-    width: 100%;
-}
-
-/* ===== 3D МУЗЕЙНЫЙ КОНТЕЙНЕР ===== */
-.museum-container {
+/* ===== ГАЛЕРЕЯ-КОНТЕЙНЕР ===== */
+.gallery-wrapper {
     position: relative;
     width: 100%;
     height: 100vh;
-    min-height: 5000px;  /* 5 метров высоты */
+    min-height: 4500px;
+    background: #1a1814;
     overflow: hidden;
-    perspective: 1500px;
-    background: #0a0a0a;
 }
 
-/* ===== ПОТОЛОК С ЛЕПНИНОЙ ===== */
-.ceiling {
-    position: fixed;
+.gallery-container {
+    position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    height: 150px;
-    background: linear-gradient(180deg, #F5F0E8 0%, #EBE5D9 100%);
-    z-index: 50;
-    pointer-events: none;
-}
-
-.ceiling-molding {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 40px;
-    background: 
-        repeating-linear-gradient(90deg,
-            transparent 0px,
-            transparent 50px,
-            rgba(139, 115, 85, 0.3) 50px,
-            rgba(139, 115, 85, 0.3) 55px,
-            transparent 55px,
-            transparent 100px
-        ),
-        linear-gradient(180deg, 
-            rgba(139, 115, 85, 0.4) 0%,
-            rgba(139, 115, 85, 0.2) 50%,
-            transparent 100%
-        );
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-}
-
-.ceiling-detail {
-    position: absolute;
-    bottom: 40px;
-    left: 0;
-    right: 0;
-    height: 20px;
-    background: 
-        radial-gradient(circle at 50% 0%, rgba(201, 185, 154, 0.5) 0%, transparent 70%),
-        repeating-linear-gradient(90deg,
-            transparent 0px,
-            transparent 100px,
-            rgba(201, 185, 154, 0.3) 100px,
-            rgba(201, 185, 154, 0.3) 105px
-        );
-}
-
-/* ===== ОКНО ПРОСМОТРА СТЕНЫ ===== */
-.wall-viewport {
-    position: absolute;
-    top: 150px;
-    left: 0;
     width: 100%;
-    height: calc(100% - 350px);
+    height: 100%;
     overflow: hidden;
     cursor: grab;
 }
 
-.wall-viewport:active {
+.gallery-container:active {
     cursor: grabbing;
 }
 
-/* ===== 3D СТЕНА С КАРТИНАМИ ===== */
+/* ===== МУЗЕЙНАЯ СТЕНА ===== */
 .museum-wall {
     position: absolute;
     width: 100%;
-    height: 5000px;  /* 5 метров */
+    height: 4500px;
+    background: 
+        linear-gradient(180deg, #2d2a24 0%, #3d3a34 15%, #4a463f 50%, #3d3a34 85%, #2d2a24 100%);
     transform-style: preserve-3d;
     transition: transform 0.05s ease-out;
+}
+
+/* Текстура стены */
+.museum-wall::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+    pointer-events: none;
+}
+
+/* ===== ПАНЕЛИ ВНИЗУ СТены ===== */
+.museum-wall::after {
+    content: '';
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
     background: 
-        linear-gradient(180deg, #F9F7F2 0%, #F0ECE4 25%, #E8E4DC 50%, #E3DCCF 75%, #DCD5C7 100%),
-        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4"/></filter><rect width="200" height="200" filter="url(%23noise)" opacity="0.06"/></svg>');
-    background-size: 100% 100%, 300px 300px;
-    box-shadow: 
-        inset 0 0 200px rgba(0,0,0,0.3),
-        0 0 100px rgba(0,0,0,0.5);
+        linear-gradient(180deg, #3d3a34 0%, #2d2a24 100%),
+        repeating-linear-gradient(90deg,
+            transparent 0px,
+            transparent 200px,
+            #1a1814 200px,
+            #1a1814 205px
+        );
+    border-top: 3px solid #c9b99a;
+    box-shadow: 0 -5px 20px rgba(0,0,0,0.5);
+    z-index: 10;
+    pointer-events: none;
 }
 
-/* Ряды картин с разным расстоянием от стены */
+/* ===== РЯДЫ КАРТИН ===== */
 .painting-row {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-    gap: 120px;
-    justify-items: center;
+    display: flex;
+    justify-content: center;
     align-items: center;
-    padding: 80px 60px;
-    transform-style: preserve-3d;
+    gap: 80px;
+    padding: 60px 40px;
+    flex-wrap: wrap;
 }
 
-.row-1 {
-    transform: translateZ(-50px);
+.top-row {
+    padding-top: 150px;
+    transform: translateZ(-30px);
 }
 
-.row-2 {
+.middle-row {
+    padding: 100px 40px;
     transform: translateZ(0px);
 }
 
-.row-3 {
-    transform: translateZ(50px);
+.bottom-row {
+    padding-bottom: 200px;
+    transform: translateZ(30px);
 }
 
-/* ===== РАМКА КАРТИНЫ С 3D ЭФФЕКТОМ ===== */
-.painting-frame {
+/* ===== КАРТИНА С РАМОЙ ===== */
+.painting-item {
     position: relative;
-    transform-style: preserve-3d;
-    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    cursor: pointer;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-.painting-frame:hover {
-    transform: scale(1.05) translateZ(50px) !important;
-    box-shadow: 
-        0 40px 100px rgba(0, 0, 0, 0.6),
-        0 20px 50px rgba(0, 0, 0, 0.4);
+.painting-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 30px 80px rgba(0,0,0,0.6);
 }
 
-.ornate-frame {
+/* Золотая рама */
+.frame-ornate {
     position: relative;
-    width: 100%;
-    max-width: 480px;
-    min-height: 350px;
-    background: linear-gradient(145deg, #9B8365, #7B6344, #5A4F35);
-    padding: 25px;
+    padding: 20px;
+    background: linear-gradient(145deg, #b8956a 0%, #8b7355 50%, #6b5344 100%);
     box-shadow: 
-        0 30px 80px rgba(0, 0, 0, 0.6),
-        0 15px 40px rgba(0, 0, 0, 0.4),
-        inset 0 5px 15px rgba(255, 255, 255, 0.3),
-        inset 0 -5px 15px rgba(0, 0, 0, 0.5),
-        0 0 0 10px rgba(100, 85, 65, 0.3);
-    border-radius: 5px;
-    transform-style: preserve-3d;
+        0 20px 60px rgba(0,0,0,0.7),
+        0 10px 30px rgba(0,0,0,0.5),
+        inset 0 2px 10px rgba(255,255,255,0.3),
+        inset 0 -2px 10px rgba(0,0,0,0.4),
+        0 0 0 3px #8b7355,
+        0 0 0 8px #6b5344;
+    border-radius: 4px;
 }
 
-.ornate-frame::before {
+.frame-ornate::before {
     content: '';
     position: absolute;
-    top: 10px;
-    left: 10px;
-    right: 10px;
-    bottom: 10px;
-    border: 3px solid rgba(201, 185, 154, 0.6);
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    border: 2px solid rgba(201, 185, 154, 0.5);
     pointer-events: none;
-    box-shadow: 
-        inset 0 3px 15px rgba(0,0,0,0.3),
-        0 0 0 3px rgba(139, 115, 85, 0.2);
 }
 
-/* Блик на стекле/лаке картины */
-.frame-reflection {
+/* Изображение картины */
+.painting-img {
+    display: block;
+    max-width: 380px;
+    max-height: 450px;
+    width: auto;
+    height: auto;
+    box-shadow: inset 0 0 40px rgba(0,0,0,0.5);
+}
+
+/* Блик на лаке */
+.frame-ornate::after {
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
@@ -258,153 +213,54 @@ body {
     bottom: 0;
     background: linear-gradient(
         135deg,
-        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255,255,255,0.08) 0%,
         transparent 40%,
         transparent 60%,
-        rgba(255, 255, 255, 0.05) 100%
+        rgba(255,255,255,0.03) 100%
     );
     pointer-events: none;
     z-index: 5;
-    border-radius: 5px;
 }
 
-.painting {
-    width: 100%;
-    height: auto;
-    max-height: 550px;
-    object-fit: contain;
-    display: block;
-    box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.6);
-    transform: translateZ(1px);
-}
-
-/* Тень от картины на стене */
-.painting-frame::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 90%;
-    height: 80%;
-    background: rgba(0, 0, 0, 0.4);
-    filter: blur(30px);
-    transform: translate(-50%, -50%) translateZ(-20px);
-    border-radius: 5px;
-    pointer-events: none;
-}
-
-/* Информация о картине */
-.painting-info {
+/* Подпись под картиной */
+.painting-label {
     text-align: center;
-    padding: 1.5rem;
-    background: rgba(255, 255, 255, 0.8);
-    border-top: 2px solid #D4CFC7;
+    padding: 1.2rem;
+    background: rgba(26, 24, 20, 0.9);
+    border-top: 1px solid #3d3a34;
     margin-top: -5px;
-    border-radius: 0 0 5px 5px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    transform: translateZ(15px);
 }
 
-.painting-info h3 {
+.painting-title {
+    display: block;
     font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    color: #2C2C2C;
-    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    color: #f5f3ef;
     font-style: italic;
+    margin-bottom: 0.3rem;
 }
 
-.painting-info p {
-    font-size: 0.95rem;
-    color: #6C6C6C;
+.painting-year {
+    font-size: 0.85rem;
+    color: #8c8c8c;
 }
 
-/* Пустое место для будущих работ */
-.empty-row {
-    padding: 100px 60px;
-    text-align: center;
-}
-
-.empty-placeholder {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 4rem;
-    border: 3px dashed #D4CFC7;
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.3);
-    color: #8C8C8C;
-    font-style: italic;
-    font-size: 1.3rem;
-    transform: translateZ(-30px);
-}
-
-/* ===== МРАМОРНЫЙ ПОЛ ===== */
-.marble-floor {
+/* ===== ИНДИКАТОР ===== */
+.control-hint {
     position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 200px;
-    background: 
-        linear-gradient(0deg, #2a2a2a 0%, #3d3d3d 100%),
-        repeating-linear-gradient(90deg,
-            rgba(255,255,255,0.05) 0px,
-            rgba(255,255,255,0.05) 1px,
-            transparent 1px,
-            transparent 100px
-        ),
-        radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.1) 0%, transparent 70%);
-    z-index: 40;
-    pointer-events: none;
-    box-shadow: 0 -10px 50px rgba(0,0,0,0.5);
-}
-
-.floor-reflection {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
-    background: linear-gradient(0deg, 
-        rgba(255,255,255,0.1) 0%,
-        transparent 50%
-    );
-    transform: perspective(500px) rotateX(60deg);
-    transform-origin: bottom;
-}
-
-.floor-pattern {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: 
-        repeating-linear-gradient(
-            45deg,
-            transparent,
-            transparent 50px,
-            rgba(255,255,255,0.03) 50px,
-            rgba(255,255,255,0.03) 51px
-        );
-}
-
-/* ===== ИНДИКАТОР УПРАВЛЕНИЯ ===== */
-.control-indicator {
-    position: fixed;
-    bottom: 230px;
+    bottom: 150px;
     left: 50%;
     transform: translateX(-50%);
-    background: rgba(26, 26, 26, 0.9);
-    color: #F5F3EF;
-    padding: 12px 30px;
-    border-radius: 30px;
+    background: rgba(13, 12, 10, 0.9);
+    color: #c9b99a;
+    padding: 12px 25px;
+    border-radius: 25px;
     font-size: 0.85rem;
     z-index: 100;
     opacity: 0;
-    animation: fadeInOut 5s ease 1s;
+    animation: fadeInOut 5s ease 1s forwards;
     pointer-events: none;
-    border: 1px solid rgba(201, 185, 154, 0.3);
-    box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+    border: 1px solid #3d3a34;
 }
 
 @keyframes fadeInOut {
@@ -414,94 +270,81 @@ body {
     100% { opacity: 0; transform: translateX(-50%) translateY(-20px); }
 }
 
-/* ===== СЕКЦИИ ===== */
-.about-section,
-.contact-section {
-    background: linear-gradient(180deg, #F0ECE4 0%, #E8E4DC 100%);
-    padding: 6rem 2rem;
+/* ===== ИНФО-СЕКЦИИ ===== */
+.info-section {
+    background: linear-gradient(180deg, #2d2a24 0%, #1a1814 100%);
+    padding: 5rem 2rem;
     text-align: center;
-    border-top: 3px solid #C9B99A;
-    border-bottom: 3px solid #C9B99A;
+    border-top: 2px solid #3d3a34;
+    border-bottom: 2px solid #3d3a34;
 }
 
-.section-content {
-    max-width: 800px;
+.info-content {
+    max-width: 700px;
     margin: 0 auto;
 }
 
-.section-content h2 {
+.info-content h2 {
     font-family: 'Playfair Display', serif;
-    font-size: 2.5rem;
-    color: #2C2C2C;
+    font-size: 2rem;
+    color: #f5f3ef;
     margin-bottom: 1rem;
 }
 
 .ornament {
-    color: #C9B99A;
-    font-size: 1.5rem;
+    color: #c9b99a;
+    font-size: 1.3rem;
     margin: 1.5rem 0;
 }
 
-.section-content p {
-    font-size: 1.2rem;
+.info-content p {
+    font-size: 1.1rem;
     line-height: 2;
-    color: #5C5C5C;
+    color: #b8b8b8;
     margin-bottom: 2rem;
 }
 
-.contact-info {
-    font-size: 1.1rem;
-    line-height: 2.5;
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
 }
 
-.contact-info a {
-    color: #8B7355;
+.contact-links a {
+    color: #c9b99a;
     text-decoration: none;
     transition: color 0.3s;
 }
 
-.contact-info a:hover {
-    color: #2C2C2C;
+.contact-links a:hover {
+    color: #f5f3ef;
 }
 
-.cta-button,
-.inquire-btn {
+.btn-contact,
+.btn-buy {
     display: inline-block;
-    padding: 1rem 3rem;
-    background: linear-gradient(135deg, #8B7355, #6B5344);
-    color: #fff;
+    padding: 1rem 2.5rem;
+    background: linear-gradient(135deg, #8b7355, #6b5344);
+    color: #f5f3ef;
     text-decoration: none;
     border-radius: 3px;
-    font-size: 1.1rem;
-    letter-spacing: 1px;
+    font-size: 1rem;
     transition: transform 0.3s, box-shadow 0.3s;
-    border: none;
-    cursor: pointer;
 }
 
-.cta-button:hover,
-.inquire-btn:hover {
+.btn-contact:hover,
+.btn-buy:hover {
     transform: translateY(-3px);
     box-shadow: 0 10px 30px rgba(139, 115, 85, 0.4);
 }
 
 /* ===== ПОДВАЛ ===== */
-.footer {
-    background: #1a1a1a;
-    color: #F5F3EF;
+.gallery-footer {
+    background: #0d0c0a;
+    color: #6c6c6c;
     text-align: center;
-    padding: 3rem 2rem;
-}
-
-.footer-content .ornament {
-    color: #C9B99A;
-    margin-bottom: 1rem;
-}
-
-.footer-note {
-    font-style: italic;
-    color: #8C8C8C;
-    margin-top: 0.5rem;
+    padding: 2rem;
     font-size: 0.9rem;
 }
 
@@ -514,85 +357,69 @@ body {
     top: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.95);
-    animation: fadeIn 0.3s ease;
+    background: rgba(0,0,0,0.95);
 }
 
 .modal-content {
     position: relative;
     margin: 3% auto;
-    max-width: 1200px;
-    background: #F9F7F2;
+    max-width: 1100px;
+    background: #1a1814;
     border-radius: 5px;
     overflow: hidden;
-    animation: slideIn 0.4s ease;
-    box-shadow: 0 30px 90px rgba(0, 0, 0, 0.8);
+    border: 2px solid #3d3a34;
 }
 
-.close-btn {
+.modal-close {
     position: absolute;
-    top: 20px;
-    right: 30px;
+    top: 15px;
+    right: 25px;
     font-size: 2.5rem;
-    color: #2C2C2C;
     background: none;
     border: none;
     cursor: pointer;
+    color: #c9b99a;
     z-index: 10;
-    transition: color 0.3s;
 }
 
-.close-btn:hover {
-    color: #8B7355;
+.modal-close:hover {
+    color: #f5f3ef;
 }
 
 .modal-body {
     display: grid;
-    grid-template-columns: 1.5fr 1fr;
+    grid-template-columns: 1.3fr 1fr;
     gap: 0;
 }
 
-.modal-image {
+.modal-img {
     width: 100%;
-    height: 650px;
-    object-fit: cover;
-    display: block;
+    height: 600px;
+    object-fit: contain;
+    background: #0d0c0a;
 }
 
-.modal-info {
+.modal-details {
     padding: 3rem;
-    background: linear-gradient(180deg, #F9F7F2 0%, #F0ECE4 100%);
+    background: linear-gradient(180deg, #2d2a24 0%, #1a1814 100%);
 }
 
-.modal-info h2 {
+.modal-details h2 {
     font-family: 'Playfair Display', serif;
-    font-size: 2.2rem;
+    font-size: 2rem;
+    color: #f5f3ef;
     margin-bottom: 0.5rem;
-    color: #2C2C2C;
 }
 
-.modal-info p {
+.modal-year {
+    color: #c9b99a;
     margin-bottom: 1.5rem;
-    color: #5C5C5C;
+}
+
+.modal-desc {
+    color: #b8b8b8;
     line-height: 1.8;
-    font-size: 1.1rem;
-}
-
-/* ===== АНИМАЦИИ ===== */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes slideIn {
-    from { 
-        opacity: 0;
-        transform: translateY(50px);
-    }
-    to { 
-        opacity: 1;
-        transform: translateY(0);
-    }
+    margin-bottom: 2rem;
 }
 
 /* ===== АДАПТИВНОСТЬ ===== */
@@ -602,30 +429,21 @@ body {
     }
     
     .painting-row {
-        grid-template-columns: 1fr;
-        gap: 80px;
+        flex-direction: column;
+        gap: 50px;
     }
     
-    .museum-wall {
-        height: 4000px;
+    .painting-img {
+        max-width: 300px;
+        max-height: 350px;
     }
     
     .modal-body {
         grid-template-columns: 1fr;
     }
     
-    .modal-image {
-        height: 400px;
-    }
-    
-    .ceiling,
-    .marble-floor {
-        display: none;
-    }
-    
-    .wall-viewport {
-        top: 0;
-        height: 100%;
+    .modal-img {
+        height: 350px;
     }
 }
 
@@ -634,17 +452,14 @@ body {
         font-size: 1.4rem;
     }
     
-    .ornate-frame {
-        max-width: 100%;
-    }
-    
     .nav-link {
         display: block;
         margin: 0.5rem 0;
     }
     
-    .control-indicator {
+    .control-hint {
         font-size: 0.75rem;
         padding: 10px 20px;
+        bottom: 140px;
     }
 }
