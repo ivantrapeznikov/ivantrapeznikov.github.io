@@ -166,22 +166,22 @@
         </div>
     </footer>
 
-    <!-- Модальное окно -->
-    <div class="modal" id="modal">
+        <!-- Модальное окно для просмотра картины -->
+    <div class="modal" id="paintingModal">
         <div class="modal-content">
             <button class="close-btn" onclick="closeModal()">&times;</button>
             <div class="modal-body">
-                <img src="" alt="" id="modalImg" class="modal-image">
+                <img src="" alt="" id="modalImage" class="modal-image">
                 <div class="modal-info">
                     <h2 id="modalTitle"></h2>
                     <p id="modalYear"></p>
-                    <p id="modalSize"></p>
-                    <p id="modalDesc"></p>
-                    <a href="#contact" class="inquire-btn" onclick="closeModal()">Узнать о покупке</a>
+                    <p id="modalDescription"></p>
+                    <a href="#" id="modalLink" class="view-full-btn">Открыть полную страницу</a>
                 </div>
             </div>
         </div>
     </div>
+
     
 <script src="script.js"></script>
 </body>
