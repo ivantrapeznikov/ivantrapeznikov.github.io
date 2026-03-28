@@ -5,303 +5,211 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Georgia', serif;
-    background: #1a1814;
-    color: #e8e4dc;
+    background: #f5f3ef;
+    color: #2c2c2c;
     line-height: 1.6;
-    overflow-x: hidden;
 }
 
 /* ===== ШАПКА ===== */
-.gallery-header {
-    background: linear-gradient(180deg, #0d0c0a 0%, #1a1814 100%);
-    text-align: center;
-    padding: 2.5rem 2rem;
-    border-bottom: 2px solid #c9b99a;
-}
-
-.gallery-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.5rem;
-    letter-spacing: 4px;
+.header {
+    background: linear-gradient(180deg, #2c2c2c 0%, #3d3d3d 100%);
     color: #f5f3ef;
-    text-transform: uppercase;
+    text-align: center;
+    padding: 3rem 2rem;
+    border-bottom: 4px solid #c9b99a;
 }
 
-.gallery-subtitle {
-    color: #c9b99a;
+.site-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    letter-spacing: 3px;
+    margin-bottom: 0.5rem;
+}
+
+.site-subtitle {
     font-style: italic;
-    margin-top: 0.5rem;
-    font-size: 1.1rem;
+    color: #c9b99a;
+    font-size: 1.2rem;
 }
 
 /* ===== НАВИГАЦИЯ ===== */
-.navbar {
-    background: rgba(26, 24, 20, 0.98);
-    padding: 1rem;
+.nav {
+    background: rgba(245, 243, 239, 0.98);
+    padding: 1.2rem;
     text-align: center;
     position: sticky;
     top: 0;
     z-index: 100;
-    border-bottom: 1px solid #3d3a34;
+    border-bottom: 2px solid #e0ddd5;
+    backdrop-filter: blur(10px);
 }
 
 .nav-link {
     display: inline-block;
     margin: 0 1.5rem;
-    color: #c9b99a;
+    color: #5c5c5c;
     text-decoration: none;
-    font-size: 1rem;
-    transition: color 0.3s;
+    font-size: 1.05rem;
+    transition: all 0.3s;
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #8b7355;
+    transition: width 0.3s;
 }
 
 .nav-link:hover {
-    color: #f5f3ef;
+    color: #2c2c2c;
 }
 
-/* ===== ГАЛЕРЕЯ-КОНТЕЙНЕР ===== */
-.gallery-wrapper {
-    position: relative;
+.nav-link:hover::after {
     width: 100%;
-    height: 100vh;
-    min-height: 4500px;
-    background: #1a1814;
+}
+
+/* ===== ГАЛЕРЕЯ ===== */
+.gallery-section {
+    padding: 4rem 2rem;
+    background: linear-gradient(180deg, #f9f7f2 0%, #f0ece4 100%);
+}
+
+.gallery-intro {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.gallery-intro h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+    color: #2c2c2c;
+}
+
+.gallery-intro p {
+    color: #6c6c6c;
+    font-style: italic;
+}
+
+/* СЕТКА КАРТИН */
+.paintings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 3rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* КАРТОЧКА КАРТИНЫ */
+.painting-card {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+
+.painting-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+.painting-wrapper {
+    position: relative;
+    padding-top: 125%; /* Соотношение сторон 4:5 */
+    background: #e8e4dc;
     overflow: hidden;
 }
 
-.gallery-container {
+.painting-photo {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    overflow: hidden;
-    cursor: grab;
+    object-fit: cover;
+    transition: transform 0.3s;
 }
 
-.gallery-container:active {
-    cursor: grabbing;
-}
-
-/* ===== МУЗЕЙНАЯ СТЕНА ===== */
-.museum-wall {
-    position: absolute;
-    width: 100%;
-    height: 4500px;
-    background: 
-        linear-gradient(180deg, #2d2a24 0%, #3d3a34 15%, #4a463f 50%, #3d3a34 85%, #2d2a24 100%);
-    transform-style: preserve-3d;
-    transition: transform 0.05s ease-out;
-}
-
-/* Текстура стены */
-.museum-wall::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
-    background-size: 200px 200px;
-    pointer-events: none;
-}
-
-/* ===== ПАНЕЛИ ВНИЗУ СТены ===== */
-.museum-wall::after {
-    content: '';
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 120px;
-    background: 
-        linear-gradient(180deg, #3d3a34 0%, #2d2a24 100%),
-        repeating-linear-gradient(90deg,
-            transparent 0px,
-            transparent 200px,
-            #1a1814 200px,
-            #1a1814 205px
-        );
-    border-top: 3px solid #c9b99a;
-    box-shadow: 0 -5px 20px rgba(0,0,0,0.5);
-    z-index: 10;
-    pointer-events: none;
-}
-
-/* ===== РЯДЫ КАРТИН ===== */
-.painting-row {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 80px;
-    padding: 60px 40px;
-    flex-wrap: wrap;
-}
-
-.top-row {
-    padding-top: 150px;
-    transform: translateZ(-30px);
-}
-
-.middle-row {
-    padding: 100px 40px;
-    transform: translateZ(0px);
-}
-
-.bottom-row {
-    padding-bottom: 200px;
-    transform: translateZ(30px);
-}
-
-/* ===== КАРТИНА С РАМОЙ ===== */
-.painting-item {
-    position: relative;
-    cursor: pointer;
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-.painting-item:hover {
+.painting-card:hover .painting-photo {
     transform: scale(1.05);
-    box-shadow: 0 30px 80px rgba(0,0,0,0.6);
 }
 
-/* Золотая рама */
-.frame-ornate {
-    position: relative;
-    padding: 20px;
-    background: linear-gradient(145deg, #b8956a 0%, #8b7355 50%, #6b5344 100%);
-    box-shadow: 
-        0 20px 60px rgba(0,0,0,0.7),
-        0 10px 30px rgba(0,0,0,0.5),
-        inset 0 2px 10px rgba(255,255,255,0.3),
-        inset 0 -2px 10px rgba(0,0,0,0.4),
-        0 0 0 3px #8b7355,
-        0 0 0 8px #6b5344;
-    border-radius: 4px;
-}
-
-.frame-ornate::before {
-    content: '';
-    position: absolute;
-    top: 8px;
-    left: 8px;
-    right: 8px;
-    bottom: 8px;
-    border: 2px solid rgba(201, 185, 154, 0.5);
-    pointer-events: none;
-}
-
-/* Изображение картины */
-.painting-img {
-    display: block;
-    max-width: 380px;
-    max-height: 450px;
-    width: auto;
-    height: auto;
-    box-shadow: inset 0 0 40px rgba(0,0,0,0.5);
-}
-
-/* Блик на лаке */
-.frame-ornate::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(
-        135deg,
-        rgba(255,255,255,0.08) 0%,
-        transparent 40%,
-        transparent 60%,
-        rgba(255,255,255,0.03) 100%
-    );
-    pointer-events: none;
-    z-index: 5;
-}
-
-/* Подпись под картиной */
-.painting-label {
+.painting-caption {
+    padding: 1.5rem;
     text-align: center;
-    padding: 1.2rem;
-    background: rgba(26, 24, 20, 0.9);
-    border-top: 1px solid #3d3a34;
-    margin-top: -5px;
+    background: #fff;
 }
 
-.painting-title {
-    display: block;
+.painting-caption h3 {
     font-family: 'Playfair Display', serif;
-    font-size: 1.2rem;
-    color: #f5f3ef;
-    font-style: italic;
-    margin-bottom: 0.3rem;
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    color: #2c2c2c;
 }
 
 .painting-year {
-    font-size: 0.85rem;
+    color: #8b7355;
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+}
+
+.painting-size {
     color: #8c8c8c;
+    font-size: 0.9rem;
 }
 
-/* ===== ИНДИКАТОР ===== */
-.control-hint {
-    position: fixed;
-    bottom: 150px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(13, 12, 10, 0.9);
-    color: #c9b99a;
-    padding: 12px 25px;
-    border-radius: 25px;
-    font-size: 0.85rem;
-    z-index: 100;
-    opacity: 0;
-    animation: fadeInOut 5s ease 1s forwards;
-    pointer-events: none;
-    border: 1px solid #3d3a34;
-}
-
-@keyframes fadeInOut {
-    0% { opacity: 0; transform: translateX(-50%) translateY(20px); }
-    15% { opacity: 1; transform: translateX(-50%) translateY(0); }
-    85% { opacity: 1; transform: translateX(-50%) translateY(0); }
-    100% { opacity: 0; transform: translateX(-50%) translateY(-20px); }
-}
-
-/* ===== ИНФО-СЕКЦИИ ===== */
-.info-section {
-    background: linear-gradient(180deg, #2d2a24 0%, #1a1814 100%);
+/* ===== СЕКЦИИ ===== */
+.about-section,
+.contact-section {
+    background: linear-gradient(180deg, #f0ece4 0%, #e8e4dc 100%);
     padding: 5rem 2rem;
     text-align: center;
-    border-top: 2px solid #3d3a34;
-    border-bottom: 2px solid #3d3a34;
+    border-top: 3px solid #c9b99a;
+    border-bottom: 3px solid #c9b99a;
 }
 
-.info-content {
-    max-width: 700px;
+.section-container {
+    max-width: 800px;
     margin: 0 auto;
 }
 
-.info-content h2 {
+.section-container h2 {
     font-family: 'Playfair Display', serif;
-    font-size: 2rem;
-    color: #f5f3ef;
+    font-size: 2.2rem;
     margin-bottom: 1rem;
+    color: #2c2c2c;
 }
 
 .ornament {
     color: #c9b99a;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     margin: 1.5rem 0;
 }
 
-.info-content p {
-    font-size: 1.1rem;
+.about-text {
+    font-size: 1.15rem;
     line-height: 2;
-    color: #b8b8b8;
-    margin-bottom: 2rem;
+    color: #5c5c5c;
+    margin-bottom: 1.5rem;
+}
+
+.contact-section p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    color: #5c5c5c;
 }
 
 .contact-links {
@@ -311,41 +219,23 @@ body {
     align-items: center;
 }
 
-.contact-links a {
-    color: #c9b99a;
+.contact-link {
+    color: #8b7355;
     text-decoration: none;
+    font-size: 1.1rem;
     transition: color 0.3s;
 }
 
-.contact-links a:hover {
-    color: #f5f3ef;
-}
-
-.btn-contact,
-.btn-buy {
-    display: inline-block;
-    padding: 1rem 2.5rem;
-    background: linear-gradient(135deg, #8b7355, #6b5344);
-    color: #f5f3ef;
-    text-decoration: none;
-    border-radius: 3px;
-    font-size: 1rem;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.btn-contact:hover,
-.btn-buy:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(139, 115, 85, 0.4);
+.contact-link:hover {
+    color: #2c2c2c;
 }
 
 /* ===== ПОДВАЛ ===== */
-.gallery-footer {
-    background: #0d0c0a;
-    color: #6c6c6c;
+.footer {
+    background: #2c2c2c;
+    color: #f5f3ef;
     text-align: center;
     padding: 2rem;
-    font-size: 0.9rem;
 }
 
 /* ===== МОДАЛЬНОЕ ОКНО ===== */
@@ -357,17 +247,34 @@ body {
     top: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.95);
 }
 
-.modal-content {
+.modal-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+}
+
+.modal-window {
     position: relative;
-    margin: 3% auto;
-    max-width: 1100px;
-    background: #1a1814;
-    border-radius: 5px;
+    margin: 2% auto;
+    max-width: 1000px;
+    background: #f9f7f2;
+    border-radius: 8px;
     overflow: hidden;
-    border: 2px solid #3d3a34;
+    animation: modalFadeIn 0.3s ease;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .modal-close {
@@ -378,17 +285,18 @@ body {
     background: none;
     border: none;
     cursor: pointer;
-    color: #c9b99a;
+    color: #f5f3ef;
     z-index: 10;
+    transition: color 0.3s;
 }
 
 .modal-close:hover {
-    color: #f5f3ef;
+    color: #c9b99a;
 }
 
-.modal-body {
+.modal-content {
     display: grid;
-    grid-template-columns: 1.3fr 1fr;
+    grid-template-columns: 1.2fr 1fr;
     gap: 0;
 }
 
@@ -396,60 +304,60 @@ body {
     width: 100%;
     height: 600px;
     object-fit: contain;
-    background: #0d0c0a;
+    background: #e8e4dc;
 }
 
-.modal-details {
+.modal-info {
     padding: 3rem;
-    background: linear-gradient(180deg, #2d2a24 0%, #1a1814 100%);
+    background: linear-gradient(180deg, #f9f7f2 0%, #f0ece4 100%);
 }
 
-.modal-details h2 {
+.modal-info h2 {
     font-family: 'Playfair Display', serif;
     font-size: 2rem;
-    color: #f5f3ef;
     margin-bottom: 0.5rem;
+    color: #2c2c2c;
 }
 
 .modal-year {
-    color: #c9b99a;
+    color: #8b7355;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.modal-size {
+    color: #6c6c6c;
     margin-bottom: 1.5rem;
+    font-style: italic;
 }
 
 .modal-desc {
-    color: #b8b8b8;
+    color: #5c5c5c;
     line-height: 1.8;
     margin-bottom: 2rem;
+    font-size: 1.05rem;
+}
+
+.btn-buy {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, #8b7355, #6b5344);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.btn-buy:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(139, 115, 85, 0.4);
 }
 
 /* ===== АДАПТИВНОСТЬ ===== */
-@media (max-width: 968px) {
-    .gallery-title {
-        font-size: 1.8rem;
-    }
-    
-    .painting-row {
-        flex-direction: column;
-        gap: 50px;
-    }
-    
-    .painting-img {
-        max-width: 300px;
-        max-height: 350px;
-    }
-    
-    .modal-body {
-        grid-template-columns: 1fr;
-    }
-    
-    .modal-img {
-        height: 350px;
-    }
-}
-
-@media (max-width: 480px) {
-    .gallery-title {
-        font-size: 1.4rem;
+@media (max-width: 768px) {
+    .site-title {
+        font-size: 2rem;
     }
     
     .nav-link {
@@ -457,9 +365,40 @@ body {
         margin: 0.5rem 0;
     }
     
-    .control-hint {
-        font-size: 0.75rem;
-        padding: 10px 20px;
-        bottom: 140px;
+    .paintings-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .modal-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .modal-img {
+        height: 350px;
+    }
+    
+    .modal-info {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        padding: 2rem 1rem;
+    }
+    
+    .site-title {
+        font-size: 1.6rem;
+    }
+    
+    .gallery-section,
+    .about-section,
+    .contact-section {
+        padding: 3rem 1rem;
+    }
+    
+    .painting-wrapper {
+        padding-top: 125%;
     }
 }
