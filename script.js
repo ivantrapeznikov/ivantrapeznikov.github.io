@@ -72,65 +72,43 @@ const paintingsData = {
     }
 };
 
-// ===== ОТКРЫТИЕ МОДАЛЬНОГО ОКНА ПРИ КЛИКЕ =====
-document.addEventListener('DOMContentLoaded', function() {
-    // Находим все рамки с картинами
-    const frames = document.querySelectorAll('.painting-frame');
-    
-    console.log('Найдено картин:', frames.length); // Для отладки
-    
-    frames.forEach(function(frame) {
-        frame.addEventListener('click', function() {
-            const id = this.getAttribute('data-id');
-            console.log('Клик по картине ID:', id); // Для отладки
+// ===== ОТКРЫТИЕ МОДАЛЬНОГО ОКНА =====
+document.querySelectorAll('.painting-frame').forEach(frame => {
+    frame.addEventListener('click', function() {
+        const id = this.getAttribute('data-id');
+        const painting = paintings[id];
+        
+        if (painting) {
+            document.getElementById('modalImage').src = painting.image;
+            document.getElementById('modalImage').alt = painting.title + ' — Иван Трапезников';
+            document.getElementById('modalTitle').textContent = painting.title;
+            document.getElementById('modalYear').textContent = painting.year;
+            document.getElementById('modalDescription').textContent = painting.description;
+            document.getElementById('modalLink').href = painting.fullPage;
             
-            const data = paintingsData[id];
-            
-            if (data) {
-                // Заполняем данные
-                document.getElementById('modalImg').src = data.image;
-                document.getElementById('modalImg').alt = data.title;
-                document.getElementById('modalTitle').textContent = data.title;
-                document.getElementById('modalYear').textContent = data.year;
-                document.getElementById('modalSize').textContent = data.size;
-                document.getElementById('modalDesc').textContent = data.description;
-                
-                // Показываем окно
-                document.getElementById('modal').style.display = 'block';
-                document.body.style.overflow = 'hidden';
-                
-                console.log('Модальное окно открыто'); // Для отладки
-            } else {
-                console.error('Картина с ID', id, 'не найдена в данных');
-            }
-        });
+            document.getElementById('paintingModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
     });
 });
 
 // ===== ЗАКРЫТИЕ МОДАЛЬНОГО ОКНА =====
 function closeModal() {
-    document.getElementById('modal').style.display = 'none';
+    document.getElementById('paintingModal').style.display = 'none';
     document.body.style.overflow = 'auto';
-    console.log('Модальное окно закрыто'); // Для отладки
 }
 
 // Закрытие по клику вне окна
-window.addEventListener('click', function(e) {
-    const modal = document.getElementById('modal');
-    if (e.target === modal) {
+window.addEventListener('click', function(event) {
+    const modal = document.getElementById('paintingModal');
+    if (event.target === modal) {
         closeModal();
     }
 });
 
-// Закрытие по клавише ESC
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-        closeModal();
-    }
-});
-
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
+// Закрытие по ESC
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
         closeModal();
     }
 });
