@@ -73,40 +73,30 @@ const paintingsData = {
 };
 
 // ===== ОТКРЫТИЕ МОДАЛЬНОГО ОКНА =====
+// При клике на картину
 document.querySelectorAll('.painting-frame').forEach(frame => {
     frame.addEventListener('click', function() {
         const id = this.getAttribute('data-id');
         const data = paintingsData[id];
         
-        if (data) {
-            document.getElementById('modalImage').src = data.image;
-            document.getElementById('modalTitle').textContent = data.title;
-            document.getElementById('modalYear').textContent = data.year;
-            document.getElementById('modalSize').textContent = data.size;
-            document.getElementById('modalDesc').textContent = data.description;
-            
-            document.getElementById('modal').style.display = 'block';
-            document.body.style.overflow = 'hidden';
-        }
+        // Заполняем данные
+        document.getElementById('modalImg').src = data.image;
+        document.getElementById('modalTitle').textContent = data.title;
+        document.getElementById('modalYear').textContent = data.year;
+        document.getElementById('modalSize').textContent = data.size;
+        document.getElementById('modalDesc').textContent = data.description;
+        
+        // Показываем окно
+        document.getElementById('modal').style.display = 'block';
+        document.body.style.overflow = 'hidden';
     });
 });
 
-// ===== ЗАКРЫТИЕ МОДАЛЬНОГО ОКНА =====
+// Закрытие
 function closeModal() {
     document.getElementById('modal').style.display = 'none';
     document.body.style.overflow = 'auto';
 }
-
-window.addEventListener('click', function(e) {
-    if (e.target === document.getElementById('modal')) {
-        closeModal();
-    }
-});
-
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-        closeModal();
-    }
 });
 
 // ===== ПЛАВНАЯ ПРОКРУТКА =====
