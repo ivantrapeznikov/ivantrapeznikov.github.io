@@ -31,9 +31,9 @@ const paintingsData = {
     5: {
         title: "«Море. Полярная ночь»",
         year: "2026",
-        size: "70×90 см",
+        size: "50×70 см",
         description: "Масло, холст. Многослойная техника. Северное море в полярную ночь.",
-        image: "images/painting-5.jpg"
+        image: "images/photo_2026-03-13_09-29-04.jpg"
     },
     6: {
         title: "«Мастерская»",
