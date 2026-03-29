@@ -12,7 +12,7 @@ const paintingsData = {
     2: {
         title: "«Северная ночь в горах»",
         year: "2026",
-        size: "80×100 см",
+        size: "24×30 см",
         description: "Масло, холст. Многослойная техника. Северное сияние над горами.",
         images: [
             "images/painting-2.jpg"
@@ -21,7 +21,7 @@ const paintingsData = {
     3: {
         title: "«Утро в деревне»",
         year: "2026",
-        size: "80×100 см",
+        size: "24×30 см",
         description: "Масло, холст. Многослойная техника. Деревенская архитектура в утреннем свете.",
         images: [
             "images/painting-3.jpg"
