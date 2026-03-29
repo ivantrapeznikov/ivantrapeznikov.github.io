@@ -24,7 +24,7 @@ const paintingsData = {
         size: "30×24 см",
         description: "Масло, холст. Многослойная техника. Деревенская архитектура в утреннем свете.",
         images: [
-            "images/photo_2026-03-13_09-28-34.jpg"
+            "images/зима.jpg"
         ]
     },
     4: {
