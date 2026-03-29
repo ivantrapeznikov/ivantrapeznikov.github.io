@@ -33,29 +33,27 @@
             <!-- РЯД 1 -->
             <div class="painting-row">
                 <div class="painting-frame" data-id="1">
-                    <div class="ornate-frame">
+                    <div class="frame">
                         <img src="images/photo_2026-03-13_09-29-09.jpg" alt="Гроза надвигается" class="painting">
                     </div>
                     <div class="painting-label">
                         <span class="title">«Гроза надвигается»</span>
-                        <span class="painting-size">80×100 см</p>
                         <span class="year">2026</span>
                     </div>
                 </div>
 
                 <div class="painting-frame" data-id="2">
-                    <div class="ornate-frame">
+                    <div class="frame">
                         <img src="images/painting-2.jpg" alt="Северная ночь в горах" class="painting">
                     </div>
                     <div class="painting-label">
                         <span class="title">«Северная ночь в горах»</span>
-                        <span class="painting-size">24×30 см</p>
                         <span class="year">2026</span>
                     </div>
                 </div>
 
                 <div class="painting-frame" data-id="3">
-                    <div class="ornate-frame">
+                    <div class="frame">
                         <img src="images/painting-3.jpg" alt="Утро в деревне" class="painting">
                     </div>
                     <div class="painting-label">
@@ -68,7 +66,7 @@
             <!-- РЯД 2 -->
             <div class="painting-row">
                 <div class="painting-frame" data-id="4">
-                    <div class="ornate-frame">
+                    <div class="frame">
                         <img src="images/painting-4.jpg" alt="Молчаливое общение" class="painting">
                     </div>
                     <div class="painting-label">
@@ -78,18 +76,17 @@
                 </div>
 
                 <div class="painting-frame" data-id="5">
-                    <div class="ornate-frame">
+                    <div class="frame">
                         <img src="images/photo_2026-03-13_09-29-04.jpg" alt="Море. Полярная ночь" class="painting">
                     </div>
                     <div class="painting-label">
                         <span class="title">«Море. Полярная ночь»</span>
-                        <span class="painting-size">50×70 см</p>
                         <span class="year">2026</span>
                     </div>
                 </div>
 
                 <div class="painting-frame" data-id="6">
-                    <div class="ornate-frame">
+                    <div class="frame">
                         <img src="images/painting-6.jpg" alt="Мастерская" class="painting">
                     </div>
                     <div class="painting-label">
@@ -102,7 +99,7 @@
             <!-- РЯД 3 -->
             <div class="painting-row">
                 <div class="painting-frame" data-id="7">
-                    <div class="ornate-frame">
+                    <div class="frame">
                         <img src="images/painting-7.jpg" alt="7 день" class="painting">
                     </div>
                     <div class="painting-label">
@@ -112,7 +109,7 @@
                 </div>
 
                 <div class="painting-frame" data-id="8">
-                    <div class="ornate-frame">
+                    <div class="frame">
                         <img src="images/painting-8.jpg" alt="Остров" class="painting">
                     </div>
                     <div class="painting-label">
@@ -122,7 +119,7 @@
                 </div>
 
                 <div class="painting-frame" data-id="9">
-                    <div class="ornate-frame">
+                    <div class="frame">
                         <img src="images/painting-9.jpg" alt="Небо" class="painting">
                     </div>
                     <div class="painting-label">
@@ -139,7 +136,7 @@
     <section class="about-section" id="about">
         <div class="section-content">
             <h2>О художнике</h2>
-            <div class="ornament">❦ </div>
+            <div class="ornament">❦ ❦</div>
             <p>Иван Трапезников — художник, работающий в технике многослойной масляной живописи. Использует натуральные пигменты и традиционные методы.</p>
             <p>Вдохновляется природной красотой, северной эстетикой, зимними пейзажами и деревенской архитектурой.</p>
             <a href="#contact" class="cta-button">Связаться</a>
@@ -162,26 +159,37 @@
     <footer class="footer">
         <div class="footer-content">
             <div class="ornament">❦</div>
-            <p>&copy; 2026 Иван Трапезников. Все права защищены.</p>
+            <p>&copy; 2025 Иван Трапезников. Все права защищены.</p>
         </div>
     </footer>
 
-        <!-- Модальное окно для просмотра картины -->
-    <div class="modal" id="paintingModal">
+    <!-- Модальное окно с галереей -->
+    <div class="modal" id="modal">
         <div class="modal-content">
             <button class="close-btn" onclick="closeModal()">&times;</button>
+            
+            <!-- Кнопка влево -->
+            <button class="nav-btn prev-btn" onclick="prevImage()">&#10094;</button>
+            
+            <!-- Кнопка вправо -->
+            <button class="nav-btn next-btn" onclick="nextImage()">&#10095;</button>
+            
             <div class="modal-body">
-                <img src="" alt="" id="modalImage" class="modal-image">
+                <div class="gallery-container">
+                    <img src="" alt="" id="modalImg" class="modal-image">
+                    <div class="image-counter" id="imageCounter"></div>
+                </div>
                 <div class="modal-info">
                     <h2 id="modalTitle"></h2>
                     <p id="modalYear"></p>
-                    <p id="modalDescription"></p>
-                    <a href="#contact" class="inquire-btn">Узнать о покупке</a>
+                    <p id="modalSize"></p>
+                    <p id="modalDesc"></p>
+                    <a href="#contact" class="inquire-btn" onclick="closeModal()">Узнать о покупке</a>
                 </div>
             </div>
         </div>
     </div>
-    
-<script src="script.js"></script>
+
+    <script src="script.js"></script>
 </body>
 </html>
