@@ -15,7 +15,7 @@ const paintingsData = {
         size: "24×30 см",
         description: "Масло, холст. Многослойная техника. Ночные сопки близ кандалакши.",
         images: [
-            "images/painting-2.jpg"
+            "images/photo_2026-03-13_10-06-27.jpg"
         ]
     },
     3: {
