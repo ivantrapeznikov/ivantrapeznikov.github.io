@@ -236,7 +236,7 @@ body {
     margin-bottom: 1rem;
 }
 
-/* ===== МОДАЛЬНОЕ ОКНО ===== */
+/* ===== МОДАЛЬНОЕ ОКНО С ГАЛЕРЕЕЙ ===== */
 .modal {
     display: none;
     position: fixed;
@@ -245,100 +245,195 @@ body {
     top: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.9);
+    background: rgba(0, 0, 0, 0.92);
     animation: fadeIn 0.3s ease;
+    overflow-y: auto;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 .modal-content {
     position: relative;
-    margin: 3% auto;
-    max-width: 1100px;
+    margin: 2% auto;
+    max-width: 1200px;
     background: #F9F7F2;
-    border-radius: 5px;
+    border-radius: 8px;
     overflow: hidden;
-    animation: slideIn 0.4s ease;
-    box-shadow: 0 30px 90px rgba(0, 0, 0, 0.5);
+    animation: slideUp 0.4s ease;
+    box-shadow: 0 20px 80px rgba(0,0,0,0.5);
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .close-btn {
     position: absolute;
     top: 20px;
     right: 30px;
-    font-size: 2.5rem;
-    color: #2C2C2C;
-    background: none;
+    font-size: 3rem;
+    background: rgba(255,255,255,0.9);
     border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
     cursor: pointer;
-    z-index: 9;
-    transition: color 0.3s;
+    color: #2C2C2C;
+    z-index: 30;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
 }
 
 .close-btn:hover {
-    color: #8B7355;
+    background: #C9B99A;
+    color: #fff;
+    transform: rotate(90deg);
+}
+
+/* Кнопки навигации */
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.9);
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #2C2C2C;
+    z-index: 30;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-btn:hover {
+    background: #C9B99A;
+    color: #fff;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.prev-btn {
+    left: 20px;
+}
+
+.next-btn {
+    right: 20px;
 }
 
 .modal-body {
     display: grid;
-    grid-template-columns: 1.5fr 1fr;
+    grid-template-columns: 1.2fr 1fr;
     gap: 0;
+}
+
+.gallery-container {
+    position: relative;
+    background: linear-gradient(180deg, #E8E4DC 0%, #DCD5C7 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .modal-image {
     width: 100%;
     height: 650px;
-    object-fit: cover;
+    object-fit: contain;
     display: block;
+    transition: opacity 0.3s ease;
+}
+
+.image-counter {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(44, 44, 44, 0.8);
+    color: #F5F3EF;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    z-index: 10;
 }
 
 .modal-info {
     padding: 3rem;
     background: linear-gradient(180deg, #F9F7F2 0%, #F0ECE4 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .modal-info h2 {
     font-family: 'Playfair Display', serif;
     font-size: 2.2rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
     color: #2C2C2C;
+    line-height: 1.2;
 }
 
-.modal-info p {
-    margin-bottom: 1.5rem;
-    color: #5C5C5C;
-    line-height: 1.8;
+.modal-info #modalYear {
+    color: #8B7355;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.modal-info #modalSize {
+    color: #6C6C6C;
+    font-style: italic;
+    margin-bottom: 2rem;
     font-size: 1.1rem;
 }
 
-/* ===== АНИМАЦИИ ===== */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+.modal-info #modalDesc {
+    color: #5C5C5C;
+    line-height: 1.9;
+    margin-bottom: 2.5rem;
+    font-size: 1.1rem;
 }
 
-@keyframes slideIn {
-    from { 
-        opacity: 0;
-        transform: translateY(50px);
-    }
-    to { 
-        opacity: 1;
-        transform: translateY(0);
-    }
+.inquire-btn {
+    display: inline-block;
+    padding: 1.2rem 2.5rem;
+    background: linear-gradient(135deg, #8B7355, #6B5344);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    text-align: center;
+    transition: all 0.3s;
+    border: 2px solid transparent;
 }
 
-/* ===== АДАПТИВНОСТЬ ===== */
+.inquire-btn:hover {
+    background: transparent;
+    border-color: #8B7355;
+    color: #8B7355;
+    transform: translateY(-2px);
+}
+
+/* Адаптивность */
 @media (max-width: 968px) {
-    .gallery-title {
-        font-size: 2rem;
-    }
-    
-    .painting-row {
-        grid-template-columns: 1fr;
-        gap: 60px;
-    }
-    
-    .grand-gallery {
-        min-height: 3000px;
+    .modal-content {
+        margin: 5% auto;
+        max-width: 95%;
     }
     
     .modal-body {
@@ -349,25 +444,50 @@ body {
         height: 400px;
     }
     
-    .grand-gallery::before,
-    .grand-gallery::after {
-        display: none;
+    .modal-info {
+        padding: 2rem;
+    }
+    
+    .nav-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+    
+    .prev-btn {
+        left: 10px;
+    }
+    
+    .next-btn {
+        right: 10px;
     }
 }
 
 @media (max-width: 480px) {
-    .gallery-title {
+    .modal-image {
+        height: 300px;
+    }
+    
+    .modal-info {
+        padding: 1.5rem;
+    }
+    
+    .modal-info h2 {
         font-size: 1.5rem;
     }
     
-    .ornate-frame {
-        max-width: 100%;
+    .close-btn {
+        top: 10px;
+        right: 10px;
+        width: 40px;
+        height: 40px;
+        font-size: 2rem;
     }
     
-    .nav-link {
-        display: block;
-        margin: 0.5rem 0;
+    .nav-btn {
+        display: none; /* Скрыть на очень маленьких экранах */
     }
+}
 
 /* ===== ПОДВАЛ ===== */
 .footer {
