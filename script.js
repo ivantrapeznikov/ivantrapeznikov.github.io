@@ -21,10 +21,10 @@ const paintingsData = {
     3: {
         title: "«Утро в деревне»",
         year: "2026",
-        size: "24×30 см",
+        size: "30×24 см",
         description: "Масло, холст. Многослойная техника. Деревенская архитектура в утреннем свете.",
         images: [
-            "images/painting-3.jpg"
+            "images/photo_2026-03-13_09-28-34.jpg"
         ]
     },
     4: {
