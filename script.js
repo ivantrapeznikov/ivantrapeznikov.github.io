@@ -48,10 +48,10 @@ const paintingsData = {
     6: {
         title: "«Мастерская»",
         year: "2025",
-        size: "60×80 см",
+        size: "50×60 см",
         description: "Масло, холст. Многослойная техника. Интерьер древней ювелирной мастерской.",
         images: [
-            "images/painting-6.jpg"
+            "images/photo_2026-03-13_09-28-43.jpg"
         ]
     },
     7: {
