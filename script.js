@@ -57,10 +57,10 @@ const paintingsData = {
     7: {
         title: "«7 день»",
         year: "2025",
-        size: "70×90 см",
+        size: "50×40 см",
         description: "Масло, холст. Многослойная техника. Символический пейзаж.",
         images: [
-            "images/painting-7.jpg"
+            "images/IMG_9303.jpeg"
         ]
     },
     8: {
