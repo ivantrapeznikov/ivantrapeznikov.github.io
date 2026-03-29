@@ -6,7 +6,7 @@ const paintingsData = {
         size: "80×100 см",
         description: "Масло, холст. Многослойная техника. Драматическая атмосфера приближающейся грозы.",
         images: [
-            "images/photo_2026-03-13_09-29-09.jpg"
+            "images/IMG_9792.jpeg"
         ]
     },
     2: {
