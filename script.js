@@ -60,7 +60,7 @@ const paintingsData = {
         size: "50×40 см",
         description: "Масло, холст. Многослойная техника. Символический пейзаж.",
         images: [
-            "images/IMG_9303.jpeg"
+            "images/Безымянный.jpg"
         ]
     },
     8: {
