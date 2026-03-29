@@ -6,9 +6,7 @@ const paintingsData = {
         size: "80×100 см",
         description: "Масло, холст. Многослойная техника. Драматическая атмосфера приближающейся грозы.",
         images: [
-            "images/photo_2026-03-13_09-29-09.jpg",
-            "images/photo_2026-03-13_09-29-09-detail1.jpg",
-            "images/photo_2026-03-13_09-29-09-detail2.jpg"
+            "images/photo_2026-03-13_09-29-09.jpg"
         ]
     },
     2: {
@@ -17,8 +15,7 @@ const paintingsData = {
         size: "80×100 см",
         description: "Масло, холст. Многослойная техника. Северное сияние над горами.",
         images: [
-            "images/painting-2.jpg",
-            "images/painting-2-detail.jpg"
+            "images/painting-2.jpg"
         ]
     },
     3: {
@@ -90,77 +87,112 @@ const paintingsData = {
 let currentPaintingId = null;
 let currentImageIndex = 0;
 
-// ===== ОТКРЫТИЕ МОДАЛЬНОГО ОКНА =====
+// ===== ИНИЦИАЛИЗАЦИЯ ПОСЛЕ ЗАГРУЗКИ СТРАНИЦЫ =====
 document.addEventListener('DOMContentLoaded', function() {
-    const frames = document.querySelectorAll('.painting-frame');
+    console.log('Страница загружена, инициализация галереи...');
     
-    frames.forEach(function(frame) {
+    // Находим все рамки картин
+    const frames = document.querySelectorAll('.painting-frame');
+    console.log('Найдено картин:', frames.length);
+    
+    // Добавляем обработчик клика на каждую картину
+    frames.forEach(function(frame, index) {
         frame.addEventListener('click', function() {
             const id = this.getAttribute('data-id');
-            currentPaintingId = id;
-            currentImageIndex = 0;
+            console.log('Клик по картине ID:', id);
             
-            const data = paintingsData[id];
-            
-            if (data) {
-                // Показать первое фото
-                document.getElementById('modalImg').src = data.images[0];
-                document.getElementById('modalTitle').textContent = data.title;
-                document.getElementById('modalYear').textContent = data.year;
-                document.getElementById('modalSize').textContent = data.size;
-                document.getElementById('modalDesc').textContent = data.description;
-                
-                // Обновить счётчик
-                updateCounter(data.images.length);
-                
-                // Показать/скрыть кнопки навигации
-                updateNavButtons(data.images.length);
-                
-                // Показать окно
-                document.getElementById('modal').style.display = 'block';
-                document.body.style.overflow = 'hidden';
-            }
+            openModal(id);
         });
     });
 });
 
-// ===== НАВИГАЦИЯ ПО ФОТО =====
+// ===== ОТКРЫТИЕ МОДАЛЬНОГО ОКНА =====
+function openModal(id) {
+    currentPaintingId = id;
+    currentImageIndex = 0;
+    
+    const data = paintingsData[id];
+    
+    if (data) {
+        console.log('Открываю картину:', data.title);
+        
+        // Устанавливаем первое фото
+        const modalImg = document.getElementById('modalImg');
+        if (modalImg) {
+            modalImg.src = data.images[0];
+            modalImg.alt = data.title;
+        }
+        
+        // Заполняем информацию
+        const modalTitle = document.getElementById('modalTitle');
+        const modalYear = document.getElementById('modalYear');
+        const modalSize = document.getElementById('modalSize');
+        const modalDesc = document.getElementById('modalDesc');
+        
+        if (modalTitle) modalTitle.textContent = data.title;
+        if (modalYear) modalYear.textContent = data.year;
+        if (modalSize) modalSize.textContent = data.size;
+        if (modalDesc) modalDesc.textContent = data.description;
+        
+        // Обновляем счётчик и кнопки
+        updateCounter(data.images.length);
+        updateNavButtons(data.images.length);
+        
+        // Показываем окно
+        const modal = document.getElementById('modal');
+        if (modal) {
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+    } else {
+        console.error('Картина с ID', id, 'не найдена!');
+    }
+}
+
+// ===== СЛЕДУЮЩЕЕ ФОТО =====
 function nextImage() {
     if (!currentPaintingId) return;
     
     const data = paintingsData[currentPaintingId];
+    if (!data || data.images.length <= 1) return;
+    
     currentImageIndex = (currentImageIndex + 1) % data.images.length;
-    
-    const img = document.getElementById('modalImg');
-    img.style.opacity = '0';
-    
-    setTimeout(function() {
-        img.src = data.images[currentImageIndex];
-        img.style.opacity = '1';
-        updateCounter(data.images.length);
-    }, 150);
+    updateImage();
 }
 
+// ===== ПРЕДЫДУЩЕЕ ФОТО =====
 function prevImage() {
     if (!currentPaintingId) return;
     
     const data = paintingsData[currentPaintingId];
+    if (!data || data.images.length <= 1) return;
+    
     currentImageIndex = (currentImageIndex - 1 + data.images.length) % data.images.length;
+    updateImage();
+}
+
+// ===== ОБНОВЛЕНИЕ ИЗОБРАЖЕНИЯ =====
+function updateImage() {
+    const data = paintingsData[currentPaintingId];
+    const modalImg = document.getElementById('modalImg');
     
-    const img = document.getElementById('modalImg');
-    img.style.opacity = '0';
-    
-    setTimeout(function() {
-        img.src = data.images[currentImageIndex];
-        img.style.opacity = '1';
-        updateCounter(data.images.length);
-    }, 150);
+    if (modalImg && data) {
+        modalImg.style.opacity = '0';
+        
+        setTimeout(function() {
+            modalImg.src = data.images[currentImageIndex];
+            modalImg.style.opacity = '1';
+            updateCounter(data.images.length);
+        }, 150);
+    }
 }
 
 // ===== ОБНОВЛЕНИЕ СЧЁТЧИКА =====
 function updateCounter(total) {
     const counter = document.getElementById('imageCounter');
-    counter.textContent = (currentImageIndex + 1) + ' из ' + total;
+    if (counter) {
+        counter.textContent = (currentImageIndex + 1) + ' из ' + total;
+    }
 }
 
 // ===== ОБНОВЛЕНИЕ КНОПОК =====
@@ -168,22 +200,29 @@ function updateNavButtons(total) {
     const prevBtn = document.querySelector('.prev-btn');
     const nextBtn = document.querySelector('.next-btn');
     
-    if (total <= 1) {
-        prevBtn.style.display = 'none';
-        nextBtn.style.display = 'none';
-    } else {
-        prevBtn.style.display = 'flex';
-        nextBtn.style.display = 'flex';
+    if (prevBtn && nextBtn) {
+        if (total <= 1) {
+            prevBtn.style.display = 'none';
+            nextBtn.style.display = 'none';
+        } else {
+            prevBtn.style.display = 'flex';
+            nextBtn.style.display = 'flex';
+        }
     }
 }
 
 // ===== ЗАКРЫТИЕ МОДАЛЬНОГО ОКНА =====
 function closeModal() {
-    document.getElementById('modal').style.display = 'none';
-    document.body.style.overflow = 'auto';
+    const modal = document.getElementById('modal');
+    if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
     currentPaintingId = null;
     currentImageIndex = 0;
 }
+
+// ===== ОБРАБОТЧИКИ СОБЫТИЙ =====
 
 // Закрытие по клику вне окна
 window.addEventListener('click', function(e) {
@@ -193,12 +232,11 @@ window.addEventListener('click', function(e) {
     }
 });
 
-// Закрытие по ESC
+// Закрытие по ESC и навигация стрелками
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
         closeModal();
     }
-    // Стрелки для навигации
     if (e.key === 'ArrowRight') {
         nextImage();
     }
@@ -207,7 +245,7 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
-// Плавная прокрутка
+// Плавная прокрутка к секциям
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault();
