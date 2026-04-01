@@ -69,7 +69,7 @@ const paintingsData = {
         size: "24×30 см",
         description: "Масло, картон. Остров в северных водах.",
         images: [
-            "images/IMG_1146.jpeg"
+            "images/IMG_1175.jpeg"
         ]
     },
     9: {
