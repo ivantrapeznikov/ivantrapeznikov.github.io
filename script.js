@@ -67,7 +67,7 @@ const paintingsData = {
         title: "«Остров»",
         year: "2021",
         size: "24×30 см",
-        description: "Масло, холст. Многослойная техника. Остров в северных водах.",
+        description: "Масло, картон. Остров в северных водах.",
         images: [
             "images/IMG_1146.jpeg"
         ]
@@ -76,7 +76,7 @@ const paintingsData = {
         title: "«Небо»",
         year: "2019",
         size: "30×40 см",
-        description: "Масло, холст. Многослойная техника. Закатные облака. Птицы.",
+        description: "Масло, холст. Закатные облака. Птицы.",
         images: [
             "images/IMG_1149.jpeg"
         ]
