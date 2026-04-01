@@ -42,7 +42,7 @@ const paintingsData = {
         size: "50×70 см",
         description: "Масло, холст. Многослойная техника. Северное море ночью. Силуэт человека у костра.",
         images: [
-            "images/photo_2026-03-13_09-29-04.jpg"
+            "images/IMG_1166.jpeg"
         ]
     },
     6: {
