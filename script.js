@@ -75,10 +75,10 @@ const paintingsData = {
     9: {
         title: "«Небо»",
         year: "2019",
-        size: "60×80 см",
+        size: "30×40 см",
         description: "Масло, холст. Многослойная техника. Закатные облака. Птицы.",
         images: [
-            "images/painting-9.jpg"
+            "images/IMG_1149.jpeg"
         ]
     }
 };
