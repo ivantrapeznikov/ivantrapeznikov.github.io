@@ -66,10 +66,10 @@ const paintingsData = {
     8: {
         title: "«Остров»",
         year: "2021",
-        size: "80×100 см",
+        size: "24×30 см",
         description: "Масло, холст. Многослойная техника. Остров в северных водах.",
         images: [
-            "images/painting-8.jpg"
+            "images/IMG_1146.jpeg"
         ]
     },
     9: {
