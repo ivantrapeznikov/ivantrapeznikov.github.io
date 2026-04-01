@@ -30,7 +30,7 @@ const paintingsData = {
     4: {
         title: "«Молчаливое общение»",
         year: "2026",
-        size: "70×60 см",
+        size: "80×70 см",
         description: "Масло, холст. Многослойная техника.",
         images: [
             "images/IMG_1182.jpeg"
