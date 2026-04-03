@@ -55,6 +55,15 @@ const paintingsData = {
         ]
     },
     7: {
+        title: "«У чёрного моря»",
+        year: "2025",
+        size: "15×20 см",
+        description: "Масло, холст. Многослойная техника. Пейзаж чёрного моря.",
+        images: [
+            "images/ВАШЕ_ФОТО.jpg"  ← Замените на имя файла!
+        ]
+    },
+    8: {
         title: "«7 день»",
         year: "2025",
         size: "50×40 см",
@@ -63,7 +72,7 @@ const paintingsData = {
             "images/Безымянный.jpg"
         ]
     },
-    8: {
+    9: {
         title: "«Остров»",
         year: "2021",
         size: "24×30 см",
@@ -72,7 +81,7 @@ const paintingsData = {
             "images/IMG_1175.jpeg"
         ]
     },
-    9: {
+    10: {
         title: "«Небо»",
         year: "2019",
         size: "30×40 см",
