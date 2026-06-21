@@ -1,6 +1,18 @@
 // ===== ДАННЫЕ О КАРТИНАХ С НЕСКОЛЬКИМИ ФОТО =====
 const paintingsData = {
+    // НОВАЯ КАРТИНА №1 — заполните данные!
     1: {
+        title: "«Весеннее утро»",
+        year: "2026",
+        size: "60×80 см",
+        description: "Весеннее утро и радуга в поле. Масло, холст. Многослойная техника.",
+        images: [
+            "images/3f083d22-0258-48f9-ad87-37a741a6aff9.jpg"
+        ]
+    },
+    
+    // БЫВШАЯ 1 → ТЕПЕРЬ 2
+    2: {
         title: "«Гроза надвигается»",
         year: "2026",
         size: "80×100 см",
@@ -9,7 +21,9 @@ const paintingsData = {
             "images/IMG_9792.jpeg"
         ]
     },
-    2: {
+    
+    // БЫВШАЯ 2 → ТЕПЕРЬ 3
+    3: {
         title: "«Северная ночь в горах»",
         year: "2026",
         size: "24×30 см",
@@ -18,7 +32,9 @@ const paintingsData = {
             "images/IMG_1164.jpeg"
         ]
     },
-    3: {
+    
+    // БЫВШАЯ 3 → ТЕПЕРЬ 4
+    4: {
         title: "«Утро в деревне»",
         year: "2026",
         size: "30×24 см",
@@ -27,7 +43,9 @@ const paintingsData = {
             "images/зима.jpg"
         ]
     },
-    4: {
+    
+    // БЫВШАЯ 4 → ТЕПЕРЬ 5
+    5: {
         title: "«Молчаливое общение»",
         year: "2026",
         size: "80×70 см",
@@ -36,7 +54,9 @@ const paintingsData = {
             "images/IMG_1182.jpeg"
         ]
     },
-    5: {
+    
+    // БЫВШАЯ 5 → ТЕПЕРЬ 6
+    6: {
         title: "«Море. Полярная ночь»",
         year: "2026",
         size: "50×70 см",
@@ -45,7 +65,9 @@ const paintingsData = {
             "images/IMG_1166.jpeg"
         ]
     },
-    6: {
+    
+    // БЫВШАЯ 6 → ТЕПЕРЬ 7
+    7: {
         title: "«Мастерская»",
         year: "2025",
         size: "50×60 см",
@@ -54,16 +76,20 @@ const paintingsData = {
             "images/photo_2026-03-13_09-28-43.jpg"
         ]
     },
-    7: {
+    
+    // БЫВШАЯ 7 → ТЕПЕРЬ 8
+    8: {
         title: "«У чёрного моря»",
         year: "2025",
         size: "15×20 см",
         description: "Масло, холст. Многослойная техника. Пейзаж чёрного моря.",
         images: [
-            "images/ВАШЕ_ФОТО.jpg"  ← Замените на имя файла!
+            "images/ВАШЕ_ФОТО.jpg"
         ]
     },
-    8: {
+    
+    // БЫВШАЯ 8 → ТЕПЕРЬ 9
+    9: {
         title: "«7 день»",
         year: "2025",
         size: "50×40 см",
@@ -72,7 +98,9 @@ const paintingsData = {
             "images/Безымянный.jpg"
         ]
     },
-    9: {
+    
+    // БЫВШАЯ 9 → ТЕПЕРЬ 10
+    10: {
         title: "«Остров»",
         year: "2021",
         size: "24×30 см",
@@ -81,7 +109,9 @@ const paintingsData = {
             "images/IMG_1175.jpeg"
         ]
     },
-    10: {
+    
+    // БЫВШАЯ 10 → ТЕПЕРЬ 11
+    11: {
         title: "«Небо»",
         year: "2019",
         size: "30×40 см",
@@ -100,16 +130,13 @@ let currentImageIndex = 0;
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Страница загружена, инициализация галереи...');
     
-    // Находим все рамки картин
     const frames = document.querySelectorAll('.painting-frame');
     console.log('Найдено картин:', frames.length);
     
-    // Добавляем обработчик клика на каждую картину
-    frames.forEach(function(frame, index) {
+    frames.forEach(function(frame) {
         frame.addEventListener('click', function() {
             const id = this.getAttribute('data-id');
             console.log('Клик по картине ID:', id);
-            
             openModal(id);
         });
     });
@@ -125,14 +152,12 @@ function openModal(id) {
     if (data) {
         console.log('Открываю картину:', data.title);
         
-        // Устанавливаем первое фото
         const modalImg = document.getElementById('modalImg');
         if (modalImg) {
             modalImg.src = data.images[0];
             modalImg.alt = data.title;
         }
         
-        // Заполняем информацию
         const modalTitle = document.getElementById('modalTitle');
         const modalYear = document.getElementById('modalYear');
         const modalSize = document.getElementById('modalSize');
@@ -143,11 +168,9 @@ function openModal(id) {
         if (modalSize) modalSize.textContent = data.size;
         if (modalDesc) modalDesc.textContent = data.description;
         
-        // Обновляем счётчик и кнопки
         updateCounter(data.images.length);
         updateNavButtons(data.images.length);
         
-        // Показываем окно
         const modal = document.getElementById('modal');
         if (modal) {
             modal.style.display = 'block';
@@ -233,7 +256,6 @@ function closeModal() {
 
 // ===== ОБРАБОТЧИКИ СОБЫТИЙ =====
 
-// Закрытие по клику вне окна
 window.addEventListener('click', function(e) {
     const modal = document.getElementById('modal');
     if (e.target === modal) {
@@ -241,7 +263,6 @@ window.addEventListener('click', function(e) {
     }
 });
 
-// Закрытие по ESC и навигация стрелками
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
         closeModal();
@@ -254,7 +275,6 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
-// Плавная прокрутка к секциям
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault();
