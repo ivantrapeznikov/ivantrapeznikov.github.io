@@ -7,7 +7,6 @@ const paintingsData = {
         year: "2026",
         size: "80×60",
         description: "Липа на фоне русского поля. Масло, холст. Многослойная техника.",
-        // 📸 Замените на путь к вашему фото (можно добавить несколько в массив)
         images: [
             "images/9IYLDH4zUMK_Hxi7KpK7odTY0lHJzJirw0ymxs7er3hAXNdfVbw0cthxltjxAg458fU_DnLxIqbWPsNwNVKweUm9.jpg"
         ]
